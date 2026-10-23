@@ -13,7 +13,7 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 		<!-- wp:column {"width":"41%"} -->
 		<div class="wp-block-column" style="flex-basis:41%">
 			<!-- wp:image {"width":"auto","height":"30px","sizeSlug":"full","className":"ph-foot-logo","style":{"border":{"radius":"0px"}}} -->
-			<figure class="wp-block-image size-full is-resized has-custom-border ph-foot-logo"><img src="<?php echo poorthuis_img( 'logo-white.png' ); ?>" alt="Poorthuis Industrial Services" style="border-radius:0px;width:auto;height:30px"/></figure>
+			<figure class="wp-block-image size-full is-resized has-custom-border ph-foot-logo"><img src="<?php echo poorthuis_img( 'logo-kop-white.png' ); ?>" alt="Poorthuis" style="border-radius:0px;width:auto;height:30px"/></figure>
 			<!-- /wp:image -->
 			<!-- wp:paragraph {"className":"ph-foot-tagline"} -->
 			<p class="ph-foot-tagline">Poorthuis Industrial Services — Solutions by Specialists.</p>
