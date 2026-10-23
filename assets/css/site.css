@@ -195,8 +195,11 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-careers-menneke { position: absolute !important; right: clamp(8px, 6vw, 104px); bottom: 0; margin: 0 !important; max-width: none !important; z-index: 3 !important; pointer-events: none; transform: translateY(21.2%); }
 .ph-careers-menneke img { height: clamp(300px, 38vw, 500px); width: auto; display: block; }
 @media (max-width: 920px) {
-	.ph-careers { padding-top: clamp(150px, 40vw, 240px) !important; }
-	.ph-careers-menneke { top: 0; bottom: auto; left: 50%; right: auto; transform: translate(-50%, -30%); }
+	/* menneke staat op de grens: shirtzoom (78,8% van de afbeelding) op de bovenrand van de banner,
+	   lijf in de certificatensectie erboven, zwaaiende hand in de donkere band */
+	.ph-cert-sec { padding-bottom: clamp(170px, 46vw, 280px) !important; }
+	.ph-careers { padding-top: clamp(56px, 16vw, 110px) !important; }
+	.ph-careers-menneke { top: 0; bottom: auto; left: 50%; right: auto; transform: translate(-50%, -78.8%); }
 	.ph-careers-menneke img { height: clamp(210px, 52vw, 320px); }
 }
 
@@ -225,3 +228,34 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-jobs .ph-job-link:hover { background: #2A2873; transform: translateY(-2px); }
 .ph-jobs .ph-job-link:hover::after { transform: translateX(4px); }
 .ph-jobs .wp-block-column:last-child { display: flex; justify-content: flex-end; }
+
+/* gecentreerde bovenkop (bijv. bij certificaten) */
+.is-style-eyebrow.has-text-align-center { display: flex !important; justify-content: center; }
+
+/* ---------- Mobiel zoals de demo ---------- */
+@media (max-width: 781px) {
+	/* cijfers in een raster van 2 x 2 */
+	.wp-block-columns.ph-stats { flex-wrap: wrap !important; row-gap: 30px; }
+	.wp-block-columns.ph-stats > .wp-block-column { flex-basis: calc(50% - 1em) !important; flex-grow: 0; }
+	/* kop: telefoon en taal eerst, hamburgermenu helemaal rechts */
+	.ph-header .wp-block-navigation { order: 3; }
+	.ph-header .wp-block-navigation__responsive-container-open svg { width: 28px; height: 28px; }
+}
+
+/* voet op mobiel: Menu en Informatie uitklapbaar (header.js zet de knoppen) */
+.ph-foot-toggle { all: unset; display: flex; align-items: center; justify-content: space-between; width: 100%; cursor: pointer; }
+.ph-foot-toggle::after { content: "⌄"; font-size: 20px; line-height: 1; color: rgba(255,255,255,.55); transition: transform .25s ease; }
+@media (max-width: 781px) {
+	.ph-footer-grid > .wp-block-column:not(:first-child) { border-top: 1px solid rgba(255,255,255,.12); }
+	.ph-footer-grid > .wp-block-column:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+	.ph-footer-grid { row-gap: 0 !important; }
+	.ph-footer-grid > .wp-block-column:first-child { margin-bottom: 26px; }
+	.ph-footer .ph-foot-head { margin: 0 !important; padding: 18px 0; font-size: 13px !important; }
+	.ph-footer .ph-foot-links { max-height: 0; overflow: hidden; gap: 0; transition: max-height .3s ease; }
+	.ph-footer .ph-foot-links li a { display: block; padding: 7px 0; }
+	.ph-footer [data-open="true"] .ph-foot-links { max-height: 320px; padding-bottom: 18px; }
+	.ph-footer [data-open="true"] .ph-foot-toggle::after { transform: rotate(180deg); }
+}
+@media (min-width: 782px) { .ph-foot-toggle { cursor: default; } .ph-foot-toggle::after { display: none; } }
+.ph-dark .ph-meta-dienstverband::before, .ph-dark .ph-meta-locatie::before { color: rgba(255,255,255,.6); }
+.ph-dark .ph-job-meta p { color: #fff; }

@@ -5,8 +5,8 @@
  * Categories: poorthuis-secties
  */
 ?>
-<!-- wp:group {"align":"full","backgroundColor":"paper","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
-<div class="wp-block-group alignfull has-paper-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"align":"full","className":"ph-cert-sec","backgroundColor":"paper","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<div class="wp-block-group alignfull ph-cert-sec has-paper-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 <!-- wp:group {"layout":{"type":"constrained","contentSize":"720px","justifyContent":"center"}} -->
 <div class="wp-block-group">
 <!-- wp:paragraph {"align":"center","className":"is-style-eyebrow"} -->
