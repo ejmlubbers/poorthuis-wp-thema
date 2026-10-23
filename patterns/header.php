@@ -21,7 +21,6 @@
 				<!-- wp:navigation-link {"label":"Onze diensten","url":"<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"Werken bij","url":"<?php echo esc_url( home_url( '/werken-bij/' ) ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"Contact","url":"<?php echo esc_url( home_url( '/contact/' ) ); ?>","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"Klantomgeving","url":"https://portaal.poorthuis.com","kind":"custom","className":"is-portal"} /-->
 			<!-- /wp:navigation -->
 
 			<!-- wp:html -->

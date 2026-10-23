@@ -38,7 +38,7 @@
 			<h4 class="wp-block-heading has-yellow-color has-text-color" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase">Informatie</h4>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"style":{"typography":{"fontSize":"15px","lineHeight":"2"}}} -->
-			<p style="font-size:15px;line-height:2"><a href="<?php echo esc_url( home_url( '/algemene-voorwaarden/' ) ); ?>">Algemene voorwaarden</a><br><a href="<?php echo esc_url( home_url( '/privacyverklaring/' ) ); ?>">Privacyverklaring</a><br><a href="https://portaal.poorthuis.com">Klantomgeving</a></p>
+			<p style="font-size:15px;line-height:2"><a href="<?php echo esc_url( home_url( '/algemene-voorwaarden/' ) ); ?>">Algemene voorwaarden</a><br><a href="<?php echo esc_url( home_url( '/privacyverklaring/' ) ); ?>">Privacyverklaring</a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
