@@ -1,0 +1,137 @@
+/* Poorthuis — vormgeving die theme.json niet kan uitdrukken.
+   Blokstijlen (is-style-*) zijn geregistreerd in inc/setup.php. */
+
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+:where(h1, h2, h3) { text-wrap: balance; }
+
+/* ---------- Kop ---------- */
+.ph-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--wp--preset--color--line); }
+.admin-bar .ph-header { top: var(--wp-admin--admin-bar--height, 32px); }
+.ph-header .wp-block-site-logo img { height: 42px; width: auto; }
+.ph-header .wp-block-navigation a { font-weight: 600; position: relative; padding: 6px 0; text-decoration: none; }
+.ph-header .wp-block-navigation-item__content::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--wp--preset--color--yellow); transition: width .2s ease; }
+.ph-header .wp-block-navigation-item__content:hover::after,
+.ph-header .current-menu-item > .wp-block-navigation-item__content::after { width: 100%; }
+.ph-header .is-portal a, .ph-header a.is-portal { color: var(--wp--preset--color--yellow-deep) !important; font-weight: 700; }
+.ph-phone { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--wp--preset--color--ink); }
+.ph-phone:hover { background: var(--wp--preset--color--paper-2); color: var(--wp--preset--color--blue); }
+.ph-phone svg { width: 18px; height: 18px; }
+.ph-header .lang-item a, .ph-header .wp-block-polylang-language-switcher a { text-decoration: none; font-weight: 600; }
+
+/* ---------- Typografie-hulp ---------- */
+.is-style-eyebrow { display: inline-flex !important; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--wp--preset--color--blue) !important; margin-bottom: 0 !important; }
+.is-style-eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--wp--preset--color--yellow); flex: none; }
+.has-blue-background-color .is-style-eyebrow, .has-blue-gradient-background .is-style-eyebrow, .ph-dark .is-style-eyebrow, .wp-block-cover .is-style-eyebrow { color: var(--wp--preset--color--yellow) !important; }
+.ph-dark, .ph-dark p, .wp-block-cover p { color: rgba(255,255,255,.85); }
+.ph-dark :where(h1,h2,h3,h4), .wp-block-cover :where(h1,h2,h3,h4) { color: #fff; }
+
+/* ---------- Knoppen ---------- */
+.wp-element-button, .wp-block-button__link { display: inline-flex; align-items: center; gap: 10px; transition: transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s; white-space: nowrap; }
+.wp-block-button__link:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(48,38,135,.5); }
+.wp-block-button__link::after { content: "→"; transition: transform .2s ease; }
+.wp-block-button__link:hover::after { transform: translateX(4px); }
+.ph-form .wp-block-button__link::after { content: none; }
+.is-style-blauw .wp-block-button__link { background: var(--wp--preset--color--blue); color: #fff; }
+.is-style-blauw .wp-block-button__link:hover { background: #2A2873; }
+.is-style-lijn .wp-block-button__link { background: transparent; color: var(--wp--preset--color--ink); border: 1.5px solid var(--wp--preset--color--line); box-shadow: none; }
+.is-style-lijn .wp-block-button__link:hover { box-shadow: 0 1px 2px rgba(20,16,61,.05), 0 16px 32px -16px rgba(20,16,61,.28); }
+.ph-dark .is-style-lijn .wp-block-button__link, .wp-block-cover .is-style-lijn .wp-block-button__link { color: #fff; border-color: rgba(255,255,255,.3); }
+.ph-dark .is-style-lijn .wp-block-button__link:hover, .wp-block-cover .is-style-lijn .wp-block-button__link:hover { border-color: var(--wp--preset--color--yellow); color: var(--wp--preset--color--yellow); box-shadow: none; }
+
+/* ---------- Waarschuwingsstreep (zoals op de bussen) ---------- */
+.is-style-streep, .ph-stripe { position: relative; }
+.is-style-streep::after, .ph-stripe::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 20px; z-index: 4; background: repeating-linear-gradient(-45deg, var(--wp--preset--color--yellow) 0 38px, var(--wp--preset--color--blue) 38px 76px); }
+
+/* ---------- Kaarten (diensten, waarden) ---------- */
+.is-style-kaart { background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 18px; padding: 34px 30px 30px; box-shadow: 0 1px 2px rgba(20,16,61,.04), 0 12px 28px -18px rgba(20,16,61,.18); transition: transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
+.is-style-kaart:hover { transform: translateY(-6px); box-shadow: 0 1px 2px rgba(20,16,61,.05), 0 26px 50px -24px rgba(20,16,61,.3); }
+.is-style-kaart > :last-child { margin-top: auto; }
+.is-style-kaart a { text-decoration: none; color: var(--wp--preset--color--ink); font-weight: 500; }
+.is-style-kaart a::after { content: " →"; display: inline-block; transition: transform .2s; }
+.is-style-kaart:hover a::after { transform: translateX(4px); }
+/* hele kaart klikbaar via de link erin */
+.is-style-kaart a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.is-style-kaart.has-yellow-background-color { border-color: var(--wp--preset--color--yellow); }
+.is-style-kaart.has-yellow-background-color :where(h3, p, a) { color: #fff; }
+.ph-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--wp--preset--color--paper-2); display: grid; place-items: center; margin-bottom: 4px; }
+.ph-icon img, .ph-icon svg { width: 24px; height: 24px; }
+
+/* ---------- Cijfers ---------- */
+.is-style-cijfer { text-align: center; }
+.is-style-cijfer > :first-child { font-weight: 800; font-size: clamp(34px, 4vw, 50px); line-height: 1; color: var(--wp--preset--color--yellow) !important; margin: 0; }
+.is-style-cijfer > :last-child { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-top: 10px; color: rgba(255,255,255,.7) !important; }
+
+/* ---------- Certificaten ---------- */
+.is-style-certificaat { border: 1px solid var(--wp--preset--color--line); background: #fff; border-radius: 16px; padding: 22px 28px; min-width: 150px; box-shadow: 0 1px 2px rgba(20,16,61,.04), 0 10px 24px -18px rgba(20,16,61,.2); transition: transform .25s cubic-bezier(.2,.7,.3,1); text-align: center; }
+.is-style-certificaat:hover { transform: translateY(-4px); }
+.is-style-certificaat > :first-child { font-size: 13px; letter-spacing: .06em; color: var(--wp--preset--color--blue) !important; margin: 0; }
+.is-style-certificaat > :last-child:not(:first-child) { font-size: 13px; color: var(--wp--preset--color--ink-2); margin: 6px 0 0; }
+
+/* ---------- Tijdlijn ---------- */
+.is-style-tijdlijn > * { display: grid; grid-template-columns: 150px 1fr; gap: 28px; padding: 26px 0; border-top: 1px solid rgba(255,255,255,.16); align-items: baseline; margin: 0 !important; }
+.is-style-tijdlijn > :last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
+.is-style-tijdlijn > * > :first-child { font-weight: 800; font-size: 30px; color: var(--wp--preset--color--yellow) !important; line-height: 1; margin: 0; }
+.is-style-tijdlijn > * > :last-child { color: rgba(255,255,255,.84); margin: 0; max-width: 48ch; }
+@media (max-width: 760px) { .is-style-tijdlijn > * { grid-template-columns: 1fr; gap: 8px; } }
+
+/* ---------- Lijst met vinkjes ---------- */
+.is-style-vinkjes { list-style: none; padding-left: 0; display: grid; gap: 10px; }
+.is-style-vinkjes li { display: flex; gap: 12px; align-items: flex-start; }
+.is-style-vinkjes li::before { content: ""; width: 18px; height: 18px; flex: none; margin-top: 4px; background: var(--wp--preset--color--blue); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+/* ---------- Jaartal-badge op een foto ---------- */
+.ph-badge-wrap { position: relative; }
+.ph-badge { position: absolute; bottom: -22px; left: -22px; background: var(--wp--preset--color--yellow); padding: 20px 24px; max-width: 200px; text-align: center; border-radius: 15px; z-index: 2; }
+.ph-badge p { color: #fff !important; margin: 0; }
+.ph-badge p:first-child { font-weight: 800; font-size: 34px; line-height: 1; }
+.ph-badge p:last-child { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
+
+/* ---------- Wereldbol-sectie ---------- */
+.ph-globe-section { overflow: hidden; }
+
+/* ---------- Vacaturekaarten (Query Loop op Werken bij) ---------- */
+.ph-jobs .wp-block-post { background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 14px; padding: 24px 28px; transition: border-color .2s, box-shadow .2s; }
+.ph-jobs .wp-block-post:hover { border-color: var(--wp--preset--color--blue); box-shadow: 0 14px 30px -20px rgba(48,38,135,.45); }
+.ph-jobs .wp-block-post-title a { text-decoration: none; color: var(--wp--preset--color--blue); }
+.ph-job-meta p { font-size: 12.5px; letter-spacing: .04em; margin: 0; }
+
+/* ---------- Homepage-hero ---------- */
+.ph-hero { position: relative; overflow: hidden; }
+.ph-hero::before, .ph-page-hero::before, .ph-photo-scrim::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ph-hero::before { background: linear-gradient(90deg, rgba(12,10,22,.64) 0%, rgba(12,10,22,.34) 46%, rgba(12,10,22,0) 78%); }
+.ph-page-hero::before, .ph-photo-scrim::before { background: linear-gradient(90deg, rgba(20,16,61,.6) 0%, rgba(20,16,61,.32) 38%, rgba(20,16,61,0) 72%); }
+.ph-hero > *, .ph-page-hero > *, .ph-photo-scrim > * { position: relative; z-index: 1; }
+.ph-hero-cols { min-height: min(calc(100vh - 76px), 680px); }
+.ph-hero-title { font-size: clamp(30px, 3.6vw, 54px) !important; font-weight: 700; color: #fff; }
+.ph-hero-title .ph-light { font-weight: 300; }
+.ph-menneke { margin: 0 !important; }
+.ph-menneke img { height: min(calc((100vh - 76px) * .7), 600px); width: auto; transform: translateX(-8%); }
+.ph-page-hero, .ph-photo-scrim { position: relative; overflow: hidden; }
+
+/* ---------- Kleine onderdelen ---------- */
+.ph-globe-hint { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; font-size: 11.5px !important; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55) !important; }
+.ph-globe-hint::before { content: ""; width: 18px; height: 18px; background: var(--wp--preset--color--yellow); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2'/%3E%3Cpath d='M18.5 2.5v3.3h-3.3M5.5 21.5v-3.3h3.3'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2'/%3E%3Cpath d='M18.5 2.5v3.3h-3.3M5.5 21.5v-3.3h3.3'/%3E%3C/svg%3E") center / contain no-repeat; }
+.ph-num { font-size: 12px !important; letter-spacing: .12em; color: var(--wp--preset--color--ink-2); margin: 0 0 4px !important; }
+.ph-titlerow { gap: 14px !important; align-items: center; }
+.ph-titlerow .ph-icon { margin: 0; }
+.ph-dienst-rows > * + * { margin-top: var(--wp--preset--spacing--70) !important; }
+.ph-anchor { scroll-margin-top: 108px; }
+.ph-offset { margin-top: 36px !important; }
+.ph-map { width: 100%; height: 300px; border: 0; border-radius: 15px; margin-top: 12px; }
+.ph-contact-lines { line-height: 1.9; }
+.ph-cards { gap: 20px !important; }
+.wp-block-image.is-resized img { width: 100%; }
+
+/* ---------- Kleine schermen ---------- */
+@media (max-width: 781px) {
+	.ph-badge { left: 12px; bottom: -18px; }
+	.ph-hero-cols { min-height: 0; }
+	.ph-hero-cols > .wp-block-column:first-child { order: 2; }
+	.ph-menneke img { height: min(46vh, 340px); transform: none; margin: 20px auto 0; }
+	.ph-offset { margin-top: 0 !important; }
+}
+
+.ph-sticky { position: sticky; top: 108px; align-self: flex-start; }
+.ph-dark .ph-job-meta p { color: rgba(255,255,255,.8); }
+.ph-dark .is-style-eyebrow a { color: inherit; text-decoration: none; }

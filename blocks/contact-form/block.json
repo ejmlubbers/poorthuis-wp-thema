@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "poorthuis/contact-form",
+  "title": "Formulier",
+  "category": "poorthuis",
+  "icon": "email-alt",
+  "description": "Contact- of stageformulier. Inzendingen gaan naar de ontvanger bij Instellingen → Algemeen.",
+  "attributes": {
+    "variant": { "type": "string", "enum": ["kort", "volledig", "stage", "sollicitatie"], "default": "volledig" },
+    "subject": { "type": "string", "default": "" },
+    "button": { "type": "string", "default": "" }
+  },
+  "supports": { "html": false, "align": false },
+  "editorScript": "file:./editor.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

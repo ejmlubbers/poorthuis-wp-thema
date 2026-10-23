@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "poorthuis/video",
+  "title": "Bedrijfsfilm",
+  "category": "poorthuis",
+  "icon": "video-alt3",
+  "description": "YouTube-video met een eigen voorvertoning. YouTube laadt pas na een klik (privacyvriendelijk, zonder cookies vooraf).",
+  "attributes": {
+    "youtube": { "type": "string", "default": "_EnSrrhb3tE" },
+    "posterId": { "type": "number" },
+    "posterUrl": { "type": "string", "default": "" },
+    "label": { "type": "string", "default": "Bekijk de bedrijfsfilm" }
+  },
+  "supports": { "html": false, "align": ["wide"] },
+  "editorScript": "file:./editor.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

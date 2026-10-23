@@ -1,0 +1,10 @@
+.ph-video { position: relative; aspect-ratio: 16 / 9; border-radius: 15px; overflow: hidden; background: var(--wp--preset--color--blue-deep); }
+.ph-video iframe, .ph-video-btn { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; }
+.ph-video-btn { cursor: pointer; background: none; display: block; }
+.ph-video-btn img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.ph-video-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,16,61,0) 45%, rgba(20,16,61,.55) 100%); }
+.ph-video-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 1; width: 76px; height: 76px; border-radius: 50%; background: var(--wp--preset--color--yellow); color: #fff; display: grid; place-items: center; box-shadow: 0 14px 34px -12px rgba(20,16,61,.6); transition: transform .25s cubic-bezier(.2,.7,.3,1); }
+.ph-video-play svg { width: 30px; height: 30px; margin-left: 4px; }
+.ph-video-label { position: absolute; right: 20px; bottom: 16px; z-index: 1; color: #fff; font-size: 15px; font-weight: 500; }
+.ph-video-btn:hover img { transform: scale(1.03); }
+.ph-video-btn:hover .ph-video-play { transform: translate(-50%,-50%) scale(1.08); }

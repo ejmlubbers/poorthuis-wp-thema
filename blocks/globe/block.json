@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "poorthuis/globe",
+  "title": "Wereldbol",
+  "category": "poorthuis",
+  "icon": "admin-site-alt3",
+  "description": "Draaibare wereldbol met de projecten uit het menu Projecten en lijnen vanuit Oldenzaal.",
+  "supports": { "html": false, "align": false, "multiple": false },
+  "editorScript": "file:./editor.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}
