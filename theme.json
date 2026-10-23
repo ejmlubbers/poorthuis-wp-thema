@@ -90,7 +90,7 @@
     "elements": {
       "heading": {
         "color": { "text": "var(--wp--preset--color--blue)" },
-        "typography": { "fontWeight": "500", "lineHeight": "1.08", "letterSpacing": "-0.02em" }
+        "typography": { "fontWeight": "400", "lineHeight": "1.08", "letterSpacing": "-0.02em" }
       },
       "h1": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-1)", "lineHeight": "1.04" } },
       "h2": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-2)" } },

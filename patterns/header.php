@@ -10,7 +10,7 @@
 	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"17px","bottom":"17px"}}},"layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group alignwide" style="padding-top:17px;padding-bottom:17px">
 		<!-- wp:image {"width":"auto","height":"42px","sizeSlug":"full","linkDestination":"custom","className":"ph-logo","style":{"border":{"radius":"0px"}}} -->
-		<figure class="wp-block-image size-full is-resized has-custom-border ph-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo poorthuis_img( 'logo-color.png' ); ?>" alt="Poorthuis Industrial Services" style="border-radius:0px;width:auto;height:42px"/></a></figure>
+		<figure class="wp-block-image size-full is-resized has-custom-border ph-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo poorthuis_img( 'logo-color.png' ); ?>" alt="Poorthuis Industrial Services" style="border-radius:0px;width:auto;height:42px"/><img class="ph-logo-white" src="<?php echo poorthuis_img( 'logo-white.png' ); ?>" alt="" aria-hidden="true" style="border-radius:0px;width:auto;height:42px"/></a></figure>
 		<!-- /wp:image -->
 
 		<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","blockGap":"24px"}} -->

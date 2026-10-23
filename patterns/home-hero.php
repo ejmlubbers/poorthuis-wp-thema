@@ -9,8 +9,8 @@
 <div class="wp-block-group alignfull ph-dark ph-hero is-style-streep" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:20px">
 <!-- wp:columns {"verticalAlignment":"bottom","align":"wide","className":"ph-hero-cols"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-bottom ph-hero-cols">
-<!-- wp:column {"verticalAlignment":"bottom","width":"34%"} -->
-<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:34%">
+<!-- wp:column {"verticalAlignment":"bottom","width":"27%"} -->
+<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:27%">
 <!-- wp:image {"sizeSlug":"large","className":"ph-menneke","style":{"border":{"radius":"0px"}}} -->
 <figure class="wp-block-image size-large ph-menneke has-custom-border"><img src="<?php echo poorthuis_img( 'menneke-zonder-voetstuk.webp' ); ?>" alt="Poorthuis menneke" style="border-radius:0px"/></figure>
 <!-- /wp:image -->

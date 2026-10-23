@@ -15,6 +15,7 @@ add_action( 'after_setup_theme', function () {
 // Eén klein stylesheet voor de vormgeving die theme.json niet kan uitdrukken.
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'poorthuis', get_theme_file_uri( 'assets/css/site.css' ), [], POORTHUIS_VERSION );
+	wp_enqueue_script( 'poorthuis-header', get_theme_file_uri( 'assets/js/header.js' ), [], POORTHUIS_VERSION, [ 'strategy' => 'defer', 'in_footer' => true ] );
 } );
 
 // Overhead die deze site niet gebruikt.

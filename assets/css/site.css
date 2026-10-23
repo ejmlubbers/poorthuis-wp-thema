@@ -6,21 +6,37 @@ body { -webkit-font-smoothing: antialiased; }
 :where(h1, h2, h3) { text-wrap: balance; }
 
 /* ---------- Kop ---------- */
-.ph-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--wp--preset--color--line); }
-.admin-bar .ph-header { top: var(--wp-admin--admin-bar--height, 32px); }
+.ph-header { background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--wp--preset--color--line); }
+/* sticky op het template-part-omhulsel: een sticky element blijft binnen zijn ouder */
+.wp-site-blocks > header.wp-block-template-part { position: sticky; top: 0; z-index: 50; }
+.admin-bar .wp-site-blocks > header.wp-block-template-part { top: var(--wp-admin--admin-bar--height, 32px); }
 .ph-header .wp-block-site-logo img { height: 42px; width: auto; }
-.ph-header .wp-block-navigation a { font-weight: 600; position: relative; padding: 6px 0; text-decoration: none; }
+.ph-header .wp-block-navigation a { font-weight: 400; position: relative; padding: 6px 0; text-decoration: none; }
 .ph-header .wp-block-navigation-item__content::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--wp--preset--color--yellow); transition: width .2s ease; }
 .ph-header .wp-block-navigation-item__content:hover::after,
 .ph-header .current-menu-item > .wp-block-navigation-item__content::after { width: 100%; }
-.ph-header .is-portal a, .ph-header a.is-portal { color: var(--wp--preset--color--yellow-deep) !important; font-weight: 700; }
+.ph-header .is-portal a, .ph-header a.is-portal { color: var(--wp--preset--color--yellow-deep) !important; font-weight: 400; }
 .ph-phone { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--wp--preset--color--ink); }
 .ph-phone:hover { background: var(--wp--preset--color--paper-2); color: var(--wp--preset--color--blue); }
 .ph-phone svg { width: 18px; height: 18px; }
 .ph-header .lang-item a, .ph-header .wp-block-polylang-language-switcher a { text-decoration: none; font-weight: 600; }
 
+/* doorzichtige kop over de homepage-hero (header.js zet de klassen) */
+.ph-logo-white { display: none !important; }
+.ph-header { transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.ph-header.is-overlay:not(.is-scrolled) { background: transparent; border-bottom-color: transparent; backdrop-filter: none; }
+.ph-header.is-overlay:not(.is-scrolled) .ph-logo img:first-child { display: none !important; }
+.ph-header.is-overlay:not(.is-scrolled) .ph-logo-white { display: block !important; }
+.ph-header.is-overlay:not(.is-scrolled) .wp-block-navigation a,
+.ph-header.is-overlay:not(.is-scrolled) .ph-phone,
+.ph-header.is-overlay:not(.is-scrolled) .wp-block-navigation__responsive-container-open { color: #fff; }
+.ph-header.is-overlay:not(.is-scrolled) .is-portal a { color: var(--wp--preset--color--yellow) !important; }
+.ph-header.is-overlay.is-scrolled { box-shadow: 0 6px 24px -18px rgba(20,16,61,.5); }
+.home .wp-site-blocks > header.wp-block-template-part { margin-bottom: -77px; }
+.wp-site-blocks > header.wp-block-template-part + * { margin-block-start: 0; }
+
 /* ---------- Typografie-hulp ---------- */
-.is-style-eyebrow { display: inline-flex !important; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--wp--preset--color--blue) !important; margin-bottom: 0 !important; }
+.is-style-eyebrow { display: inline-flex !important; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--wp--preset--color--blue) !important; margin-bottom: 0 !important; }
 .is-style-eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--wp--preset--color--yellow); flex: none; }
 .has-blue-background-color .is-style-eyebrow, .has-blue-gradient-background .is-style-eyebrow, .ph-dark .is-style-eyebrow, .wp-block-cover .is-style-eyebrow { color: var(--wp--preset--color--yellow) !important; }
 .ph-dark, .ph-dark p, .wp-block-cover p { color: rgba(255,255,255,.85); }
@@ -59,7 +75,7 @@ body { -webkit-font-smoothing: antialiased; }
 
 /* ---------- Cijfers ---------- */
 .is-style-cijfer { text-align: center; }
-.is-style-cijfer > :first-child { font-weight: 800; font-size: clamp(28px, 3.4vw, 46px); white-space: nowrap; line-height: 1; color: var(--wp--preset--color--yellow) !important; margin: 0; }
+.is-style-cijfer > :first-child { font-weight: 400; font-size: clamp(28px, 3.4vw, 46px); white-space: nowrap; line-height: 1; color: var(--wp--preset--color--yellow) !important; margin: 0; }
 .is-style-cijfer > :last-child { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-top: 10px; color: rgba(255,255,255,.7) !important; }
 
 /* ---------- Certificaten ---------- */
@@ -71,7 +87,7 @@ body { -webkit-font-smoothing: antialiased; }
 /* ---------- Tijdlijn ---------- */
 .is-style-tijdlijn > * { display: grid; grid-template-columns: 150px 1fr; gap: 28px; padding: 26px 0; border-top: 1px solid rgba(255,255,255,.16); align-items: baseline; margin: 0 !important; }
 .is-style-tijdlijn > :last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
-.is-style-tijdlijn > * > :first-child { font-weight: 800; font-size: 30px; color: var(--wp--preset--color--yellow) !important; line-height: 1; margin: 0; }
+.is-style-tijdlijn > * > :first-child { font-weight: 400; font-size: 30px; color: var(--wp--preset--color--yellow) !important; line-height: 1; margin: 0; }
 .is-style-tijdlijn > * > :last-child { color: rgba(255,255,255,.84); margin: 0; max-width: 48ch; }
 @media (max-width: 760px) { .is-style-tijdlijn > * { grid-template-columns: 1fr; gap: 8px; } }
 
@@ -84,7 +100,7 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-badge-wrap { position: relative; }
 .ph-badge { position: absolute; bottom: -22px; left: -22px; background: var(--wp--preset--color--yellow); padding: 20px 24px; max-width: 200px; text-align: center; border-radius: 15px; z-index: 2; }
 .ph-badge p { color: #fff !important; margin: 0; }
-.ph-badge p:first-child { font-weight: 800; font-size: 34px; line-height: 1; }
+.ph-badge p:first-child { font-weight: 400; font-size: 34px; line-height: 1; }
 .ph-badge p:last-child { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
 
 /* ---------- Wereldbol-sectie ---------- */
@@ -97,16 +113,17 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-job-meta p { font-size: 12.5px; letter-spacing: .04em; margin: 0; }
 
 /* ---------- Homepage-hero ---------- */
-.ph-hero { position: relative; overflow: hidden; }
+.ph-hero { position: relative; overflow: hidden; min-height: calc(100svh - var(--wp-admin--admin-bar--height, 0px)); display: flex; flex-direction: column; justify-content: flex-end; padding-top: calc(77px + var(--wp--preset--spacing--50)) !important; }
 .ph-hero::before, .ph-page-hero::before, .ph-photo-scrim::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .ph-hero::before { background: linear-gradient(90deg, rgba(12,10,22,.64) 0%, rgba(12,10,22,.34) 46%, rgba(12,10,22,0) 78%); }
 .ph-page-hero::before, .ph-photo-scrim::before { background: linear-gradient(90deg, rgba(20,16,61,.6) 0%, rgba(20,16,61,.32) 38%, rgba(20,16,61,0) 72%); }
 .ph-hero > *, .ph-page-hero > *, .ph-photo-scrim > * { position: relative; z-index: 1; }
-.ph-hero-cols { min-height: min(calc(100vh - 76px), 680px); }
-.ph-hero-title { font-size: clamp(30px, 3.6vw, 54px) !important; font-weight: 700; color: #fff; }
-.ph-hero-title .ph-light { font-weight: 300; }
+.ph-hero-cols { width: 100%; margin-bottom: 0 !important; }
+.ph-hero-cols > .wp-block-column:last-child { padding-bottom: clamp(40px, 8vh, 110px); }
+.ph-hero-cols p:not(.is-style-eyebrow) { max-width: 48ch; color: rgba(255,255,255,.9); }
+.ph-hero-title { font-size: clamp(30px, 3.6vw, 54px) !important; font-weight: 400; color: #fff; }
 .ph-menneke { margin: 0 !important; }
-.ph-menneke img { height: min(calc((100vh - 76px) * .7), 600px); width: auto; transform: translateX(-8%); }
+.ph-menneke img { height: min(calc((100svh - 77px) * .7), 600px); width: auto; max-width: none; transform: translateX(-8%); display: block; }
 .ph-page-hero, .ph-photo-scrim { position: relative; overflow: hidden; }
 
 /* ---------- Kleine onderdelen ---------- */
@@ -126,7 +143,8 @@ body { -webkit-font-smoothing: antialiased; }
 /* ---------- Kleine schermen ---------- */
 @media (max-width: 781px) {
 	.ph-badge { left: 12px; bottom: -18px; }
-	.ph-hero-cols { min-height: 0; }
+	.ph-hero { min-height: 0; }
+	.ph-hero-cols > .wp-block-column:last-child { padding-bottom: 0; }
 	.ph-hero-cols > .wp-block-column:first-child { order: 2; }
 	.ph-menneke img { height: min(46vh, 340px); transform: none; margin: 20px auto 0; }
 	.ph-offset { margin-top: 0 !important; }
@@ -135,3 +153,7 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-sticky { position: sticky; top: 108px; align-self: flex-start; }
 .ph-dark .ph-job-meta p { color: rgba(255,255,255,.8); }
 .ph-dark .is-style-eyebrow a { color: inherit; text-decoration: none; }
+
+/* logo zonder extra regelhoogte, zodat de kop precies 77px hoog is */
+.ph-logo { margin: 0 !important; line-height: 0; }
+.ph-logo a { display: block; line-height: 0; }
