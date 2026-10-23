@@ -203,3 +203,25 @@ body { -webkit-font-smoothing: antialiased; }
 /* dienstkaarten: nummer rechtsboven, en het icoonvakje in de gele kaart */
 .ph-card-num { position: absolute; top: 22px; right: 24px; margin: 0 !important; font-size: 12px !important; letter-spacing: .12em; color: var(--wp--preset--color--ink-2) !important; }
 .is-style-kaart.has-yellow-background-color .ph-icon { background: rgba(255,255,255,.22); }
+
+/* paginakoppen breken zoals in de demo (smalle titelkolom) */
+.ph-page-hero h1 { max-width: 16ch; }
+
+/* ---------- Werken bij: menneke met lasmasker in de kop ---------- */
+.ph-hero-figure { position: absolute !important; right: clamp(16px, 12vw, 180px); top: 102px; margin: 0 !important; max-width: none !important; z-index: 1; pointer-events: none; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+.ph-hero-figure img { width: 278px; height: auto; display: block; }
+@media (max-width: 860px) { .ph-hero-figure { display: none !important; } }
+
+/* nummer in een vakje (voordeelkaarten) */
+.ph-chip { width: 44px; height: 44px; border-radius: 12px; background: var(--wp--preset--color--paper-2); color: var(--wp--preset--color--blue) !important; display: grid !important; place-items: center; margin: 0 0 6px !important; font-size: 15px !important; line-height: 1; }
+
+/* vacaturekaarten: labels voor de velden, blauwe Solliciteer-knop */
+.ph-jobs .ph-job-meta p { color: var(--wp--preset--color--blue); font-weight: 600; }
+.ph-meta-dienstverband::before, .ph-meta-locatie::before { color: var(--wp--preset--color--ink-2); font-weight: 400; }
+.ph-meta-dienstverband::before { content: "Dienstverband: "; }
+.ph-meta-locatie::before { content: "Locatie: "; }
+.ph-jobs .ph-job-link { display: inline-flex; align-items: center; gap: 10px; background: var(--wp--preset--color--blue); color: #fff !important; border-radius: 999px; padding: 12px 26px; text-decoration: none; white-space: nowrap; transition: background .2s, transform .15s; }
+.ph-jobs .ph-job-link::after { content: "→"; transition: transform .2s; }
+.ph-jobs .ph-job-link:hover { background: #2A2873; transform: translateY(-2px); }
+.ph-jobs .ph-job-link:hover::after { transform: translateX(4px); }
+.ph-jobs .wp-block-column:last-child { display: flex; justify-content: flex-end; }

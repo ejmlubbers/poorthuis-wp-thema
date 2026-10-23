@@ -21,6 +21,9 @@
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
+<!-- wp:image {"sizeSlug":"large","className":"ph-hero-figure","style":{"border":{"radius":"0px"}}} -->
+<figure class="wp-block-image size-large ph-hero-figure has-custom-border"><img src="<?php echo poorthuis_img( 'menneke-lasser.webp' ); ?>" alt="Poorthuis menneke" style="border-radius:0px"/></figure>
+<!-- /wp:image -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
@@ -53,8 +56,8 @@
 <div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--50)">
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
-<!-- wp:paragraph {"className":"ph-num"} -->
-<p class="ph-num">01</p>
+<!-- wp:paragraph {"className":"ph-chip"} -->
+<p class="ph-chip">01</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Interne opleiding</h3>
@@ -66,8 +69,8 @@
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
-<!-- wp:paragraph {"className":"ph-num"} -->
-<p class="ph-num">02</p>
+<!-- wp:paragraph {"className":"ph-chip"} -->
+<p class="ph-chip">02</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">De wereld als werkterrein</h3>
@@ -79,8 +82,8 @@
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
-<!-- wp:paragraph {"className":"ph-num"} -->
-<p class="ph-num">03</p>
+<!-- wp:paragraph {"className":"ph-chip"} -->
+<p class="ph-chip">03</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Hecht team</h3>
@@ -92,8 +95,8 @@
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
-<!-- wp:paragraph {"className":"ph-num"} -->
-<p class="ph-num">04</p>
+<!-- wp:paragraph {"className":"ph-chip"} -->
+<p class="ph-chip">04</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":3} -->
 <h3 class="wp-block-heading">Goede voorwaarden</h3>
@@ -129,15 +132,15 @@
 <!-- wp:post-excerpt {"moreText":""} /--></div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center","className":"ph-job-meta"} -->
-<div class="wp-block-column is-vertically-aligned-center ph-job-meta"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"dienstverband"}}}}} -->
-<p></p>
+<div class="wp-block-column is-vertically-aligned-center ph-job-meta"><!-- wp:paragraph {"className":"ph-meta-dienstverband","metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"dienstverband"}}}}} -->
+<p class="ph-meta-dienstverband"></p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"locatie"}}}}} -->
-<p></p>
+<!-- wp:paragraph {"className":"ph-meta-locatie","metadata":{"bindings":{"content":{"source":"core/post-meta","args":{"key":"locatie"}}}}} -->
+<p class="ph-meta-locatie"></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center","width":"160px"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:160px"><!-- wp:read-more {"content":"Bekijk vacature","className":"ph-job-link"} /--></div>
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:160px"><!-- wp:read-more {"content":"Solliciteer","className":"ph-job-link"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 <!-- /wp:post-template -->

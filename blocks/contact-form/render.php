@@ -62,7 +62,7 @@ $uid      = wp_unique_id( 'ph-form-' );
 $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'family-name', 'email' => 'email', 'telefoon' => 'tel', 'bedrijf' => 'organization' ];
 ?>
 <form <?php echo get_block_wrapper_attributes( [ 'class' => 'ph-form ph-form--' . $variant ] ); ?>
-	action="<?php echo esc_url( rest_url( 'poorthuis/v1/contact' ) ); ?>" method="post" enctype="multipart/form-data" novalidate
+	action="<?php echo esc_url( wp_make_link_relative( rest_url( 'poorthuis/v1/contact' ) ) ); ?>" method="post" enctype="multipart/form-data" novalidate
 	data-ok="<?php echo esc_attr( in_array( $variant, [ 'stage', 'sollicitatie' ], true ) ? $t( 'Bedankt voor je aanmelding! We nemen snel contact met je op.', 'Thanks for applying! We will be in touch soon.' ) : $t( 'Bedankt! Wij nemen spoedig contact met u op.', 'Thank you! We will be in touch shortly.' ) ); ?>"
 	data-sending="<?php echo esc_attr( $t( 'Bezig met versturen…', 'Sending…' ) ); ?>">
 	<div class="ph-form-grid">
