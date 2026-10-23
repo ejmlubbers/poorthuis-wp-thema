@@ -25,8 +25,8 @@
 <!-- /wp:group -->
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--70)">
-<!-- wp:group {"align":"wide","layout":{"type":"grid","minimumColumnWidth":"240px"}} -->
-<div class="wp-block-group alignwide">
+<!-- wp:group {"align":"wide","className":"ph-ct-cards","layout":{"type":"grid","minimumColumnWidth":"210px"}} -->
+<div class="wp-block-group alignwide ph-ct-cards">
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
 <!-- wp:paragraph {"className":"is-style-eyebrow"} -->
@@ -69,9 +69,6 @@
 <!-- wp:paragraph -->
 <p>Wij denken graag met u mee. Bij vragen over prijzen, advies en montagetijden krijgt u binnen korte tijd een eerlijke offerte en gedegen advies.</p>
 <!-- /wp:paragraph -->
-<!-- wp:html -->
-<iframe class="ph-map" title="Kaart: Schelmaatstraat 12, Oldenzaal" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=6.9055%2C52.3055%2C6.9255%2C52.3155&amp;layer=mapnik&amp;marker=52.3105%2C6.9155"></iframe>
-<!-- /wp:html -->
 </div>
 <!-- /wp:column -->
 <!-- wp:column -->

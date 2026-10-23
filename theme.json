@@ -65,11 +65,11 @@
       ],
       "fontSizes": [
         { "slug": "small", "name": "Klein", "size": "14px", "fluid": false },
-        { "slug": "medium", "name": "Normaal", "size": "17px", "fluid": false },
-        { "slug": "lead", "name": "Intro", "size": "19px", "fluid": false },
-        { "slug": "kop-3", "name": "Kop 3", "size": "21px", "fluid": false },
-        { "slug": "kop-2", "name": "Kop 2", "size": "clamp(26px, 3.3vw, 42px)", "fluid": false },
-        { "slug": "kop-1", "name": "Kop 1", "size": "clamp(32px, 4.6vw, 54px)", "fluid": false },
+        { "slug": "medium", "name": "Normaal", "size": "16px", "fluid": false },
+        { "slug": "lead", "name": "Intro", "size": "18px", "fluid": false },
+        { "slug": "kop-3", "name": "Kop 3", "size": "20px", "fluid": false },
+        { "slug": "kop-2", "name": "Kop 2", "size": "clamp(24px, 2.8vw, 36px)", "fluid": false },
+        { "slug": "kop-1", "name": "Kop 1", "size": "clamp(30px, 3.9vw, 46px)", "fluid": false },
         { "slug": "display", "name": "Groot", "size": "clamp(37px, 5.5vw, 66px)", "fluid": false }
       ]
     },
@@ -97,14 +97,14 @@
       "h3": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-3)", "letterSpacing": "-0.01em", "lineHeight": "1.2" } },
       "link": {
         "color": { "text": "var(--wp--preset--color--blue)" },
-        "typography": { "textDecoration": "underline" },
+        "typography": { "textDecoration": "none" },
         ":hover": { "color": { "text": "var(--wp--preset--color--yellow-deep)" } }
       },
       "button": {
         "color": { "background": "var(--wp--preset--color--yellow)", "text": "var(--wp--preset--color--white)" },
         "border": { "radius": "999px" },
-        "spacing": { "padding": { "top": "13px", "bottom": "13px", "left": "28px", "right": "28px" } },
-        "typography": { "fontSize": "17px", "fontWeight": "400", "lineHeight": "1.2" },
+        "spacing": { "padding": { "top": "12px", "bottom": "12px", "left": "26px", "right": "26px" } },
+        "typography": { "fontSize": "16px", "fontWeight": "400", "lineHeight": "1.2" },
         ":hover": { "color": { "background": "var(--wp--preset--color--yellow-deep)", "text": "var(--wp--preset--color--white)" } }
       }
     },

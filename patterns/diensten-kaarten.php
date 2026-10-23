@@ -24,6 +24,9 @@
 <div class="wp-block-group alignwide ph-cards" style="margin-top:var(--wp--preset--spacing--50)">
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">01</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/revisie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
@@ -33,13 +36,16 @@
 <!-- wp:paragraph -->
 <p>Het uitvallen van productie kost tijd en geld. Ons flexibele revisieteam zorgt kostenefficiënt dat uw productielijnen weer operationeel worden.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph -->
-<p><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#revisie">Meer informatie</a></p>
+<!-- wp:paragraph {"className":"ph-more"} -->
+<p class="ph-more"><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#revisie">Meer informatie</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">02</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/modificatie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
@@ -49,13 +55,16 @@
 <!-- wp:paragraph -->
 <p>Wij realiseren elke gewenste modificatie en bouwen specials die naadloos aansluiten op uw specifieke situatie. Getest en afgeperst volgens de normen.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph -->
-<p><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#modificatie">Meer informatie</a></p>
+<!-- wp:paragraph {"className":"ph-more"} -->
+<p class="ph-more"><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#modificatie">Meer informatie</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">03</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/laswerk.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
@@ -65,13 +74,16 @@
 <!-- wp:paragraph -->
 <p>Producten en diensten voor industrieën die laswerk vragen dat voldoet aan de strengste internationale normen.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph -->
-<p><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#laswerk">Meer informatie</a></p>
+<!-- wp:paragraph {"className":"ph-more"} -->
+<p class="ph-more"><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#laswerk">Meer informatie</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">04</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/machinale-bewerking.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
@@ -81,8 +93,8 @@
 <!-- wp:paragraph -->
 <p>Een compleet machinepark voor draaien, carrouseldraaien, frezen, boren, kotteren en meer. Alles onder één dak in onze geoutilleerde werkplaats.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph -->
-<p><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#machinale-bewerking">Meer informatie</a></p>
+<!-- wp:paragraph {"className":"ph-more"} -->
+<p class="ph-more"><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>#machinale-bewerking">Meer informatie</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -97,8 +109,8 @@
 <!-- wp:paragraph -->
 <p>Bespreek uw vraagstuk met onze specialisten.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph -->
-<p><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Neem contact op</a></p>
+<!-- wp:paragraph {"className":"ph-more"} -->
+<p class="ph-more"><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact opnemen</a></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

@@ -22,7 +22,7 @@
 						PanelBody,
 						{ title: 'Video' },
 						el( TextControl, { label: 'YouTube-link of id', value: a.youtube, onChange: ( v ) => setAttributes( { youtube: toId( v ) } ), __nextHasNoMarginBottom: true } ),
-						el( TextControl, { label: 'Tekst rechtsonder', value: a.label, onChange: ( label ) => setAttributes( { label } ), __nextHasNoMarginBottom: true } ),
+						el( TextControl, { label: 'Tekst onder de video', value: a.label, onChange: ( label ) => setAttributes( { label } ), __nextHasNoMarginBottom: true } ),
 						el( MediaUploadCheck, null, el( MediaUpload, {
 							allowedTypes: [ 'image' ],
 							value: a.posterId,
@@ -34,11 +34,10 @@
 						} ) )
 					)
 				),
-				el( 'div', { className: 'ph-video-btn' },
-					poster && el( 'img', { src: poster, alt: '' } ),
-					el( 'span', { className: 'ph-video-play' }, el( 'svg', { viewBox: '0 0 24 24' }, el( 'path', { d: 'M8 5.5v13l11-6.5z', fill: 'currentColor' } ) ) ),
-					el( 'span', { className: 'ph-video-label' }, a.label )
-				)
+				el( 'div', { className: 'ph-video-frame' },
+					el( 'div', { className: 'ph-video-btn' }, poster && el( 'img', { src: poster, alt: '' } ) )
+				),
+				el( 'span', { className: 'ph-video-caption' }, '▶ ' + ( a.label || 'Bekijk de bedrijfsfilm' ) )
 			);
 		},
 		save: () => null,

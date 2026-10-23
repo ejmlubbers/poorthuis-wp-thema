@@ -20,9 +20,9 @@
 <!-- wp:paragraph -->
 <p>Wij denken graag met u mee. Bij vragen over prijzen, advies en montagetijden krijgt u binnen korte tijd een eerlijke offerte en gedegen advies.</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"className":"ph-contact-lines"} -->
-<p class="ph-contact-lines">Schelmaatstraat 12, 7575 BD Oldenzaal<br><a href="tel:+31541513415">+31 541-513 415</a><br><a href="mailto:info@poorthuis.com">info@poorthuis.com</a></p>
-<!-- /wp:paragraph -->
+<!-- wp:html -->
+<ul class="ph-contact-lines"><li><span class="ph-ct-ico"><img src="<?php echo poorthuis_img( '../icons/pin-blauw.svg' ); ?>" alt="" width="19" height="19"></span>Schelmaatstraat 12, 7575 BD Oldenzaal</li><li><span class="ph-ct-ico"><img src="<?php echo poorthuis_img( '../icons/telefoon-blauw.svg' ); ?>" alt="" width="19" height="19"></span><a href="tel:+31541513415">+31 541-513 415</a></li><li><span class="ph-ct-ico"><img src="<?php echo poorthuis_img( '../icons/mail-blauw.svg' ); ?>" alt="" width="19" height="19"></span><a href="mailto:info@poorthuis.com">info@poorthuis.com</a></li></ul>
+<!-- /wp:html -->
 </div>
 <!-- /wp:column -->
 <!-- wp:column -->

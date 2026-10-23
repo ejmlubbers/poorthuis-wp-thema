@@ -69,7 +69,7 @@ $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'fam
 		<?php foreach ( $fields as [ $name, $label, $type, $req, $wide ] ) :
 			$id = $uid . '-' . $name; ?>
 			<div class="ph-field<?php echo $wide ? ' is-wide' : ''; ?>">
-				<label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?><?php echo $req ? ' <span aria-hidden="true">*</span>' : ''; ?></label>
+				<label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?></label>
 				<?php if ( 'textarea' === $type ) : ?>
 					<textarea id="<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $name ); ?>" rows="4"<?php echo $req ? ' required' : ''; ?>></textarea>
 				<?php elseif ( 'file' === $type ) : ?>

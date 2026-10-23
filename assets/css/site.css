@@ -58,16 +58,21 @@ body { -webkit-font-smoothing: antialiased; }
 .is-style-streep::after, .ph-stripe::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 20px; z-index: 4; background: repeating-linear-gradient(-45deg, var(--wp--preset--color--yellow) 0 38px, var(--wp--preset--color--blue) 38px 76px); }
 
 /* ---------- Kaarten (diensten, waarden) ---------- */
-.is-style-kaart { background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 18px; padding: 34px 30px 30px; box-shadow: 0 1px 2px rgba(20,16,61,.04), 0 12px 28px -18px rgba(20,16,61,.18); transition: transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
+.is-style-kaart { background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 18px; padding: 30px 26px 26px; box-shadow: 0 1px 2px rgba(20,16,61,.04), 0 12px 28px -18px rgba(20,16,61,.18); transition: transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease; height: 100%; display: flex; flex-direction: column; position: relative; }
 .is-style-kaart:hover { transform: translateY(-6px); box-shadow: 0 1px 2px rgba(20,16,61,.05), 0 26px 50px -24px rgba(20,16,61,.3); }
 .is-style-kaart > :last-child { margin-top: auto; }
-.is-style-kaart a { text-decoration: none; color: var(--wp--preset--color--ink); font-weight: 500; }
-.is-style-kaart a::after { content: " →"; display: inline-block; transition: transform .2s; }
-.is-style-kaart:hover a::after { transform: translateX(4px); }
-/* hele kaart klikbaar via de link erin */
-.is-style-kaart a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.is-style-kaart p { font-size: 16px; }
+.is-style-kaart a { text-decoration: none; color: var(--wp--preset--color--ink); }
+.is-style-kaart a:hover { color: var(--wp--preset--color--blue); }
+/* "Meer informatie"-links: pijltje, en de hele kaart klikbaar */
+.ph-more a::after { content: "→"; display: inline-block; margin-left: 8px; transition: transform .2s; }
+.is-style-kaart:hover .ph-more a::after { transform: translateX(4px); }
+.ph-more a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+/* contactkaarten vullen altijd de hele rij */
+.ph-ct-cards { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important; gap: 18px !important; }
+.ph-ct-cards .is-style-eyebrow { margin-bottom: 12px !important; font-size: 12px !important; }
 .is-style-kaart.has-yellow-background-color { border-color: var(--wp--preset--color--yellow); }
-.is-style-kaart.has-yellow-background-color :where(h3, p, a) { color: #fff; }
+.is-style-kaart.has-yellow-background-color :where(h3, p, a), .is-style-kaart.has-yellow-background-color a:hover { color: #fff; }
 .ph-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--wp--preset--color--paper-2); display: grid; place-items: center; margin-bottom: 4px; }
 .ph-icon img, .ph-icon svg { width: 24px; height: 24px; }
 
@@ -155,3 +160,46 @@ body { -webkit-font-smoothing: antialiased; }
 /* logo zonder extra regelhoogte, zodat de kop precies 77px hoog is */
 .ph-logo { margin: 0 !important; line-height: 0; }
 .ph-logo a { display: block; line-height: 0; }
+
+/* badge blijft over de foto staan, ook met de tekstregel onder de video */
+.ph-badge-wrap:has(.ph-video-caption) .ph-badge { bottom: 14px; }
+
+/* ---------- Voet (zoals de demo) ---------- */
+.ph-footer { color: rgba(255,255,255,.7); }
+.ph-footer p, .ph-footer li { color: rgba(255,255,255,.7); }
+.ph-footer a { color: rgba(255,255,255,.7); text-decoration: none; transition: color .2s; }
+.ph-footer a:hover { color: var(--wp--preset--color--yellow); }
+.ph-foot-logo { margin: 0 0 16px !important; }
+.ph-foot-tagline { font-size: 15px; max-width: 34ch; margin: 0 !important; }
+.ph-foot-contact { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5; }
+.ph-foot-contact li { display: flex; gap: 10px; align-items: flex-start; }
+.ph-foot-ico { flex: none; display: inline-grid; place-items: center; width: 17px; height: 17px; margin-top: 1px; }
+.ph-foot-ico img { width: 16px; height: 16px; }
+.ph-foot-head { font-size: 12px !important; letter-spacing: .12em; text-transform: uppercase; color: var(--wp--preset--color--yellow) !important; margin: 0 0 16px !important; }
+.ph-foot-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; font-size: 15px; }
+.ph-foot-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 40px !important; padding-block: 18px; }
+.ph-foot-bottom p { font-size: 12.5px; margin: 0; }
+
+/* ---------- Contactregels met iconen ---------- */
+.ph-contact-lines { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-direction: column; gap: 14px; }
+.ph-contact-lines li { display: flex; gap: 12px; align-items: center; color: var(--wp--preset--color--ink); }
+.ph-contact-lines a { color: var(--wp--preset--color--ink); }
+.ph-contact-lines a:hover { color: var(--wp--preset--color--blue); }
+.ph-ct-ico { flex: none; display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: var(--wp--preset--color--paper-2); }
+.ph-ct-ico img { width: 19px; height: 19px; }
+
+/* ---------- Werken bij-banner met zwaaiend menneke ---------- */
+.ph-careers { position: relative; overflow: visible !important; z-index: 2; }
+.ph-careers::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background: linear-gradient(90deg, rgba(12,10,22,.72) 0%, rgba(12,10,22,.4) 52%, rgba(12,10,22,.05) 100%); }
+.ph-careers > * { position: relative; z-index: 1; }
+.ph-careers-menneke { position: absolute !important; right: clamp(8px, 6vw, 104px); bottom: 0; margin: 0 !important; max-width: none !important; z-index: 3 !important; pointer-events: none; transform: translateY(21.2%); }
+.ph-careers-menneke img { height: clamp(300px, 38vw, 500px); width: auto; display: block; }
+@media (max-width: 920px) {
+	.ph-careers { padding-top: clamp(150px, 40vw, 240px) !important; }
+	.ph-careers-menneke { top: 0; bottom: auto; left: 50%; right: auto; transform: translate(-50%, -30%); }
+	.ph-careers-menneke img { height: clamp(210px, 52vw, 320px); }
+}
+
+/* dienstkaarten: nummer rechtsboven, en het icoonvakje in de gele kaart */
+.ph-card-num { position: absolute; top: 22px; right: 24px; margin: 0 !important; font-size: 12px !important; letter-spacing: .12em; color: var(--wp--preset--color--ink-2) !important; }
+.is-style-kaart.has-yellow-background-color .ph-icon { background: rgba(255,255,255,.22); }

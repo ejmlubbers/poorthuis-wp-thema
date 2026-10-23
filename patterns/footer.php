@@ -4,51 +4,65 @@
  * Slug: poorthuis/footer
  * Inserter: no
  */
+$ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../icons/' . $n . '-wit.svg' ) . '" alt="" width="16" height="16"></span>';
 ?>
-<!-- wp:group {"tagName":"footer","className":"ph-dark","backgroundColor":"blue-darker","style":{"spacing":{"padding":{"top":"64px","bottom":"0"}},"elements":{"link":{"color":{"text":"#ffffff"}}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
-<footer class="wp-block-group ph-dark has-blue-darker-background-color has-background has-link-color" style="padding-top:64px;padding-bottom:0">
-	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"40px"}}}} -->
-	<div class="wp-block-columns alignwide">
-		<!-- wp:column {"width":"44%"} -->
-		<div class="wp-block-column" style="flex-basis:44%">
-			<!-- wp:image {"width":"auto","height":"30px","sizeSlug":"full","style":{"border":{"radius":"0px"}}} -->
-			<figure class="wp-block-image size-full is-resized has-custom-border"><img src="<?php echo poorthuis_img( 'logo-white.png' ); ?>" alt="Poorthuis Industrial Services" style="border-radius:0px;width:auto;height:30px"/></figure>
+<!-- wp:group {"tagName":"footer","className":"ph-footer","backgroundColor":"blue-darker","style":{"spacing":{"padding":{"top":"64px","bottom":"0"}}},"layout":{"type":"constrained","wideSize":"1240px"}} -->
+<footer class="wp-block-group ph-footer has-blue-darker-background-color has-background" style="padding-top:64px;padding-bottom:0">
+	<!-- wp:columns {"align":"wide","className":"ph-footer-grid","style":{"spacing":{"blockGap":{"left":"40px"}}}} -->
+	<div class="wp-block-columns alignwide ph-footer-grid">
+		<!-- wp:column {"width":"41%"} -->
+		<div class="wp-block-column" style="flex-basis:41%">
+			<!-- wp:image {"width":"auto","height":"30px","sizeSlug":"full","className":"ph-foot-logo","style":{"border":{"radius":"0px"}}} -->
+			<figure class="wp-block-image size-full is-resized has-custom-border ph-foot-logo"><img src="<?php echo poorthuis_img( 'logo-white.png' ); ?>" alt="Poorthuis Industrial Services" style="border-radius:0px;width:auto;height:30px"/></figure>
 			<!-- /wp:image -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"15px"}}} -->
-			<p style="font-size:15px">Poorthuis Industrial Services — Solutions by Specialists.</p>
+			<!-- wp:paragraph {"className":"ph-foot-tagline"} -->
+			<p class="ph-foot-tagline">Poorthuis Industrial Services — Solutions by Specialists.</p>
 			<!-- /wp:paragraph -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"14px","lineHeight":"1.8"}}} -->
-			<p style="font-size:14px;line-height:1.8">Schelmaatstraat 12, 7575 BD Oldenzaal<br><a href="tel:+31541513415">+31 541-513 415</a><br><a href="mailto:info@poorthuis.com">info@poorthuis.com</a></p>
-			<!-- /wp:paragraph -->
+			<!-- wp:html -->
+			<ul class="ph-foot-contact">
+				<li><?php echo $ico( 'pin' ); ?>Schelmaatstraat 12, 7575 BD Oldenzaal</li>
+				<li><?php echo $ico( 'telefoon' ); ?><a href="tel:+31541513415">+31 541-513 415</a></li>
+				<li><?php echo $ico( 'mail' ); ?><a href="mailto:info@poorthuis.com">info@poorthuis.com</a></li>
+			</ul>
+			<!-- /wp:html -->
 		</div>
 		<!-- /wp:column -->
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"13px","letterSpacing":"0.1em","textTransform":"uppercase"}},"textColor":"yellow"} -->
-			<h4 class="wp-block-heading has-yellow-color has-text-color" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase">Menu</h4>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"15px","lineHeight":"2"}}} -->
-			<p style="font-size:15px;line-height:2"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a><br><a href="<?php echo esc_url( home_url( '/over-ons/' ) ); ?>">Over ons</a><br><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>">Onze diensten</a><br><a href="<?php echo esc_url( home_url( '/werken-bij/' ) ); ?>">Werken bij</a><br><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></p>
+			<!-- wp:paragraph {"className":"ph-foot-head"} -->
+			<p class="ph-foot-head">Menu</p>
 			<!-- /wp:paragraph -->
+			<!-- wp:list {"className":"ph-foot-links"} -->
+			<ul class="wp-block-list ph-foot-links">
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/over-ons/' ) ); ?>">Over ons</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>">Onze diensten</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/werken-bij/' ) ); ?>">Werken bij</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li><!-- /wp:list-item -->
+			</ul>
+			<!-- /wp:list -->
 		</div>
 		<!-- /wp:column -->
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:heading {"level":4,"style":{"typography":{"fontSize":"13px","letterSpacing":"0.1em","textTransform":"uppercase"}},"textColor":"yellow"} -->
-			<h4 class="wp-block-heading has-yellow-color has-text-color" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase">Informatie</h4>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"style":{"typography":{"fontSize":"15px","lineHeight":"2"}}} -->
-			<p style="font-size:15px;line-height:2"><a href="<?php echo esc_url( home_url( '/algemene-voorwaarden/' ) ); ?>">Algemene voorwaarden</a><br><a href="<?php echo esc_url( home_url( '/privacyverklaring/' ) ); ?>">Privacyverklaring</a></p>
+			<!-- wp:paragraph {"className":"ph-foot-head"} -->
+			<p class="ph-foot-head">Informatie</p>
 			<!-- /wp:paragraph -->
+			<!-- wp:list {"className":"ph-foot-links"} -->
+			<ul class="wp-block-list ph-foot-links">
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/algemene-voorwaarden/' ) ); ?>">Algemene voorwaarden</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/privacyverklaring/' ) ); ?>">Privacyverklaring</a></li><!-- /wp:list-item -->
+			</ul>
+			<!-- /wp:list -->
 		</div>
 		<!-- /wp:column -->
 	</div>
 	<!-- /wp:columns -->
 
-	<!-- wp:group {"align":"wide","style":{"border":{"top":{"color":"#ffffff1f","width":"1px"}},"spacing":{"padding":{"top":"18px","bottom":"18px"},"margin":{"top":"40px"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
-	<div class="wp-block-group alignwide" style="border-top-color:#ffffff1f;border-top-width:1px;margin-top:40px;padding-top:18px;padding-bottom:18px">
-		<!-- wp:paragraph {"style":{"typography":{"fontSize":"12.5px"}}} -->
-		<p style="font-size:12.5px">© <?php echo esc_html( gmdate( 'Y' ) ); ?> Poorthuis Industrial Services — Alle rechten voorbehouden</p>
+	<!-- wp:group {"align":"wide","className":"ph-foot-bottom","layout":{"type":"flex","justifyContent":"space-between"}} -->
+	<div class="wp-block-group alignwide ph-foot-bottom">
+		<!-- wp:paragraph -->
+		<p>© <?php echo esc_html( gmdate( 'Y' ) ); ?> Poorthuis Industrial Services — Alle rechten voorbehouden</p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
