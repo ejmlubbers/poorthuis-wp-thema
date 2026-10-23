@@ -67,9 +67,9 @@
         { "slug": "small", "name": "Klein", "size": "14px", "fluid": false },
         { "slug": "medium", "name": "Normaal", "size": "17px", "fluid": false },
         { "slug": "lead", "name": "Intro", "size": "19px", "fluid": false },
-        { "slug": "h3", "name": "Kop 3", "size": "21px", "fluid": false },
-        { "slug": "h2", "name": "Kop 2", "size": "clamp(26px, 3.3vw, 42px)", "fluid": false },
-        { "slug": "h1", "name": "Kop 1", "size": "clamp(32px, 4.6vw, 54px)", "fluid": false },
+        { "slug": "kop-3", "name": "Kop 3", "size": "21px", "fluid": false },
+        { "slug": "kop-2", "name": "Kop 2", "size": "clamp(26px, 3.3vw, 42px)", "fluid": false },
+        { "slug": "kop-1", "name": "Kop 1", "size": "clamp(32px, 4.6vw, 54px)", "fluid": false },
         { "slug": "display", "name": "Groot", "size": "clamp(37px, 5.5vw, 66px)", "fluid": false }
       ]
     },
@@ -92,9 +92,9 @@
         "color": { "text": "var(--wp--preset--color--blue)" },
         "typography": { "fontWeight": "500", "lineHeight": "1.08", "letterSpacing": "-0.02em" }
       },
-      "h1": { "typography": { "fontSize": "var(--wp--preset--font-size--h1)", "lineHeight": "1.04" } },
-      "h2": { "typography": { "fontSize": "var(--wp--preset--font-size--h2)" } },
-      "h3": { "typography": { "fontSize": "var(--wp--preset--font-size--h3)", "letterSpacing": "-0.01em", "lineHeight": "1.2" } },
+      "h1": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-1)", "lineHeight": "1.04" } },
+      "h2": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-2)" } },
+      "h3": { "typography": { "fontSize": "var(--wp--preset--font-size--kop-3)", "letterSpacing": "-0.01em", "lineHeight": "1.2" } },
       "link": {
         "color": { "text": "var(--wp--preset--color--blue)" },
         "typography": { "textDecoration": "underline" },

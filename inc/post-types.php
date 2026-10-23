@@ -63,7 +63,7 @@ add_action( 'init', function () {
 				'type'              => $kind,
 				'single'            => true,
 				'show_in_rest'      => true,
-				'sanitize_callback' => 'number' === $kind ? 'floatval' : 'sanitize_text_field',
+				'sanitize_callback' => 'number' === $kind ? fn( $v ) => (float) $v : fn( $v ) => sanitize_text_field( $v ),
 				'auth_callback'     => fn() => current_user_can( 'edit_posts' ),
 			] );
 		}
