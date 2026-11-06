@@ -12,7 +12,7 @@ if ( ! $id ) {
 }
 $poster = ! empty( $attributes['posterId'] ) ? wp_get_attachment_image_url( $attributes['posterId'], 'large' ) : '';
 $poster = $poster ?: ( $attributes['posterUrl'] ?? '' ) ?: poorthuis_img( 'al-70-jaar.webp' );
-$label  = ( $attributes['label'] ?? '' ) ?: 'Bekijk de bedrijfsfilm';
+$label  = ( $attributes['label'] ?? '' ) ?: poorthuis_t( 'Bekijk de bedrijfsfilm', 'Watch the company film' );
 $play   = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
 ?>
 <div <?php echo get_block_wrapper_attributes( [ 'class' => 'ph-video' ] ); ?> data-youtube="<?php echo esc_attr( $id ); ?>">

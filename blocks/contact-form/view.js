@@ -17,7 +17,7 @@
 			try {
 				const res = await fetch( form.action, { method: 'POST', body: fd } );
 				const json = await res.json().catch( () => ( {} ) );
-				if ( ! res.ok || ! json.ok ) throw new Error( json.message || 'Versturen is niet gelukt.' );
+				if ( ! res.ok || ! json.ok ) throw new Error( json.message || form.dataset.error );
 				form.reset();
 				status.classList.add( 'is-ok' );
 				status.textContent = form.dataset.ok;

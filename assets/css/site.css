@@ -19,6 +19,11 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-phone:hover { background: var(--wp--preset--color--paper-2); color: var(--wp--preset--color--blue); }
 .ph-phone svg { width: 18px; height: 18px; }
 .ph-header .lang-item a, .ph-header .wp-block-polylang-language-switcher a { text-decoration: none; font-weight: 600; }
+/* taalwisselaar van Polylang: alleen het vlaggetje, compact naast de telefoon */
+.ph-header .pll-switcher { flex: none; width: auto; }
+.ph-header .pll-switcher ul { display: flex; gap: 10px; width: auto; margin: 0; padding: 0; list-style: none; }
+.ph-header .pll-switcher li { margin: 0; width: auto; }
+.ph-header .pll-switcher a { display: flex; align-items: center; width: auto; }
 
 /* doorzichtige kop over de homepage-hero (header.js zet de klassen) */
 .ph-logo-white { display: none !important; }

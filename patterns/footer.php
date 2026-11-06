@@ -34,11 +34,11 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 			<!-- /wp:paragraph -->
 			<!-- wp:list {"className":"ph-foot-links"} -->
 			<ul class="wp-block-list ph-foot-links">
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/over-ons/' ) ); ?>">Over ons</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/onze-diensten/' ) ); ?>">Onze diensten</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/werken-bij/' ) ); ?>">Werken bij</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/' ); ?>">Home</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/over-ons/' ); ?>"><?php echo esc_html( poorthuis_t( 'Over ons', 'About us' ) ); ?></a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/onze-diensten/' ); ?>"><?php echo esc_html( poorthuis_t( 'Onze diensten', 'Our services' ) ); ?></a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/werken-bij/' ); ?>"><?php echo esc_html( poorthuis_t( 'Werken bij', 'Careers' ) ); ?></a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/contact/' ); ?>">Contact</a></li><!-- /wp:list-item -->
 			</ul>
 			<!-- /wp:list -->
 		</div>
@@ -46,12 +46,12 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:paragraph {"className":"ph-foot-head"} -->
-			<p class="ph-foot-head">Informatie</p>
+			<p class="ph-foot-head"><?php echo esc_html( poorthuis_t( 'Informatie', 'Information' ) ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:list {"className":"ph-foot-links"} -->
 			<ul class="wp-block-list ph-foot-links">
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/algemene-voorwaarden/' ) ); ?>">Algemene voorwaarden</a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo esc_url( home_url( '/privacyverklaring/' ) ); ?>">Privacyverklaring</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/algemene-voorwaarden/' ); ?>"><?php echo esc_html( poorthuis_t( 'Algemene voorwaarden', 'Terms & conditions' ) ); ?></a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/privacyverklaring/' ); ?>"><?php echo esc_html( poorthuis_t( 'Privacyverklaring', 'Privacy statement' ) ); ?></a></li><!-- /wp:list-item -->
 			</ul>
 			<!-- /wp:list -->
 		</div>
@@ -62,7 +62,7 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 	<!-- wp:group {"align":"wide","className":"ph-foot-bottom","layout":{"type":"flex","justifyContent":"space-between"}} -->
 	<div class="wp-block-group alignwide ph-foot-bottom">
 		<!-- wp:paragraph -->
-		<p>© <?php echo esc_html( gmdate( 'Y' ) ); ?> Poorthuis Industrial Services — Alle rechten voorbehouden</p>
+		<p>© <?php echo esc_html( gmdate( 'Y' ) ); ?> Poorthuis Industrial Services — <?php echo esc_html( poorthuis_t( 'Alle rechten voorbehouden', 'All rights reserved' ) ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->

@@ -64,7 +64,8 @@ $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'fam
 <form <?php echo get_block_wrapper_attributes( [ 'class' => 'ph-form ph-form--' . $variant ] ); ?>
 	action="<?php echo esc_url( wp_make_link_relative( rest_url( 'poorthuis/v1/contact' ) ) ); ?>" method="post" enctype="multipart/form-data" novalidate
 	data-ok="<?php echo esc_attr( in_array( $variant, [ 'stage', 'sollicitatie' ], true ) ? $t( 'Bedankt voor je aanmelding! We nemen snel contact met je op.', 'Thanks for applying! We will be in touch soon.' ) : $t( 'Bedankt! Wij nemen spoedig contact met u op.', 'Thank you! We will be in touch shortly.' ) ); ?>"
-	data-sending="<?php echo esc_attr( $t( 'Bezig met versturen…', 'Sending…' ) ); ?>">
+	data-sending="<?php echo esc_attr( $t( 'Bezig met versturen…', 'Sending…' ) ); ?>"
+	data-error="<?php echo esc_attr( $t( 'Versturen is niet gelukt.', 'Sending failed.' ) ); ?>">
 	<div class="ph-form-grid">
 		<?php foreach ( $fields as [ $name, $label, $type, $req, $wide ] ) :
 			$id = $uid . '-' . $name; ?>
@@ -84,6 +85,7 @@ $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'fam
 	<!-- onzichtbaar voor mensen; bots vullen het in -->
 	<div class="ph-hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 	<input type="hidden" name="_t" value="<?php echo esc_attr( poorthuis_form_token() ); ?>">
+	<input type="hidden" name="_lang" value="<?php echo $en ? 'en' : 'nl'; ?>">
 	<input type="hidden" name="_subject" value="<?php echo esc_attr( $subject ); ?>">
 
 	<label class="ph-check">

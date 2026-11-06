@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'POORTHUIS_VERSION', wp_get_theme()->get( 'Version' ) );
 
+require __DIR__ . '/inc/lang.php';
 require __DIR__ . '/inc/setup.php';
 require __DIR__ . '/inc/post-types.php';
 require __DIR__ . '/inc/blocks.php';

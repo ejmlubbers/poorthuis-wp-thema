@@ -8,6 +8,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/** Foutmeldingen voor bezoekers van de Engelse site. */
+const POORTHUIS_FORM_ERRORS_EN = [
+	'Het formulier is verlopen. Herlaad de pagina en probeer het opnieuw.' => 'The form has expired. Please reload the page and try again.',
+	'Te veel berichten in korte tijd. Probeer het later opnieuw.'          => 'Too many messages in a short time. Please try again later.',
+	'Vul een geldig e-mailadres in.'                                         => 'Please enter a valid email address.',
+	'Het cv moet een pdf- of Word-bestand van maximaal 5 MB zijn.'           => 'Your CV must be a PDF or Word file of up to 5 MB.',
+	'Versturen is niet gelukt. Mail ons gerust direct op info@poorthuis.com.' => 'Sending failed. Feel free to email us directly at info@poorthuis.com.',
+];
+
 const POORTHUIS_FORM_FIELDS = [
 	// sleutel => [label, verplicht]
 	'naam'          => [ 'Naam', false ],
@@ -58,7 +67,8 @@ add_action( 'rest_api_init', function () {
 
 function poorthuis_handle_form( WP_REST_Request $req ) {
 	$p    = $req->get_body_params();
-	$fail = fn( $msg, $code = 400 ) => new WP_REST_Response( [ 'ok' => false, 'message' => $msg ], $code );
+	$en   = 'en' === ( $p['_lang'] ?? '' );
+	$fail = fn( $msg, $code = 400 ) => new WP_REST_Response( [ 'ok' => false, 'message' => $en ? ( POORTHUIS_FORM_ERRORS_EN[ $msg ] ?? $msg ) : $msg ], $code );
 
 	// honeypot: bots vullen dit verborgen veld in
 	if ( ! empty( $p['website'] ) ) {
