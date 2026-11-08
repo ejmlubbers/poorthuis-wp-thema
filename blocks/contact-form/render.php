@@ -6,6 +6,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Pagina's met een formulier niet in de paginacache (W3 Total Cache e.d.): het formulier bevat
+// een ondertekend tijdstip, en een oude kopie uit de cache zou na een dag 'verlopen' melden.
+if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+	define( 'DONOTCACHEPAGE', true );
+}
+
 $variant = $attributes['variant'] ?? 'volledig';
 $lang    = poorthuis_lang();
 $t       = 'poorthuis_t';
