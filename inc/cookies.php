@@ -45,12 +45,12 @@ add_action( 'wp_footer', function () {
 	}
 	?>
 	<div class="ph-cookie" role="dialog" aria-live="polite" aria-label="<?php echo esc_attr( poorthuis_t( 'Cookies', 'Cookies', 'Cookies' ) ); ?>" hidden>
-		<p class="ph-cookie-title"><?php echo esc_html( poorthuis_t( 'Mogen wij cookies gebruiken?', 'May we use cookies?', 'Dürfen wir Cookies verwenden?' ) ); ?></p>
+		<p class="ph-cookie-title"><?php echo esc_html( poorthuis_t( 'Cookies', 'Cookies', 'Cookies' ) ); ?></p>
 		<p class="ph-cookie-text"><?php echo wp_kses_post( sprintf(
 			poorthuis_t(
-				'Wij gebruiken cookies om anoniem te meten hoe onze website wordt gebruikt, zodat we hem kunnen verbeteren. Lees meer in onze <a href="%s">privacyverklaring</a>.',
-				'We use cookies to anonymously measure how our website is used, so we can improve it. Read more in our <a href="%s">privacy statement</a>.',
-				'Wir verwenden Cookies, um anonym zu messen, wie unsere Website genutzt wird, damit wir sie verbessern können. Mehr dazu in unserer <a href="%s">Datenschutzerklärung</a>.'
+				'Voor de beste gebruikerservaring gebruiken wij cookies. Daarmee meten we anoniem hoe onze website wordt gebruikt, zodat we hem kunnen verbeteren. Meer hierover leest u in onze <a href="%s">privacyverklaring</a>.',
+				'We use cookies to give you the best experience on our website. They let us measure anonymously how the site is used, so we can improve it. Read more in our <a href="%s">privacy statement</a>.',
+				'Für die beste Nutzererfahrung verwenden wir Cookies. Damit messen wir anonym, wie unsere Website genutzt wird, um sie zu verbessern. Mehr dazu in unserer <a href="%s">Datenschutzerklärung</a>.'
 			),
 			poorthuis_url( '/privacyverklaring/' )
 		) ); ?></p>
