@@ -290,12 +290,12 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-stage-h3 { margin-top: 46px !important; }
 .ph-tiles { gap: 14px !important; margin: 24px 0 26px !important; }
 .ph-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.ph-tiles .is-style-kaart > :last-child { margin-top: 12px; } /* geen 'Meer informatie' onderaan: tekst direct onder de titel */
+.ph-tiles .is-style-kaart h3 { margin-top: 22px; }
 @media (max-width: 560px) { .ph-tiles { grid-template-columns: 1fr !important; } }
-.ph-tile { background: var(--wp--preset--color--paper); border: 1px solid var(--wp--preset--color--line); border-radius: 16px; padding: 22px 22px 20px; transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s; }
-.ph-tile:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -24px rgba(20,16,61,.35); }
-.ph-tile .ph-icon { background: #fff; margin-bottom: 14px; }
-.ph-tile p { margin: 0; font-size: 15.5px; color: var(--wp--preset--color--ink-2); }
-.ph-tile .ph-tile-title { color: var(--wp--preset--color--blue); font-size: 17px; font-weight: 600; margin-bottom: 6px; }
 .ph-callout { background: #FFF8DB; border-left: 3px solid var(--wp--preset--color--yellow); border-radius: 0 12px 12px 0; padding: 16px 20px; }
-/* donkere kop met foto onder een blauw filter (zoals de andere paginakoppen) */
-.ph-vacancy-hero.ph-vacancy-hero { background: linear-gradient(90deg, rgba(26,26,57,.94) 0%, rgba(40,37,110,.84) 45%, rgba(48,46,128,.66) 100%), url("../images/al-70-jaar.webp") center 40% / cover no-repeat !important; }
+/* donkere kop: foto vooraf blauw ingekleurd, precies zoals hero-diensten/over-ons/contact, met dezelfde verloop-laag */
+.ph-vacancy-hero.ph-vacancy-hero { background: url("../images/hero-vacature.webp") center / cover no-repeat !important; }
+.ph-vacancy-hero { position: relative; overflow: hidden; }
+.ph-vacancy-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(20,16,61,.6) 0%, rgba(20,16,61,.32) 38%, rgba(20,16,61,0) 72%); }
+.ph-vacancy-hero > * { position: relative; z-index: 1; }

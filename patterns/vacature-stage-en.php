@@ -29,53 +29,65 @@
 <!-- /wp:paragraph -->
 <!-- wp:group {"className":"ph-tiles","layout":{"type":"grid","minimumColumnWidth":"230px"}} -->
 <div class="wp-block-group ph-tiles">
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">01</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/revisie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Overhaul and maintenance</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Overhaul and maintenance</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Getting to know overhaul and maintenance in practice.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">02</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/machinale-bewerking.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Machining</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Machining</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Gaining experience with machining.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">03</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/laswerk.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Modification and welding</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Modification and welding</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Getting to know the modification of technical parts and specialised welding.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">04</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/modificatie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Service and engineering</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Service and engineering</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Working on on-site service and on analysing and solving technical problems.</p>
 <!-- /wp:paragraph -->

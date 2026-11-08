@@ -29,53 +29,65 @@
 <!-- /wp:paragraph -->
 <!-- wp:group {"className":"ph-tiles","layout":{"type":"grid","minimumColumnWidth":"230px"}} -->
 <div class="wp-block-group ph-tiles">
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">01</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/revisie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Revisie en onderhoud</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Revisie en onderhoud</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Kennismaken met revisie en onderhoud in de praktijk.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">02</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/machinale-bewerking.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Machinale bewerking</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Machinale bewerking</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Ervaring opdoen met machinale bewerking.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">03</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/laswerk.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Modificatie en laswerk</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Modificatie en laswerk</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Kennismaken met modificatie van technische onderdelen en gespecialiseerd laswerk.</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"className":"ph-tile","layout":{"type":"default"}} -->
-<div class="wp-block-group ph-tile">
+<!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
+<div class="wp-block-group is-style-kaart">
+<!-- wp:paragraph {"className":"ph-card-num"} -->
+<p class="ph-card-num">04</p>
+<!-- /wp:paragraph -->
 <!-- wp:html -->
 <span class="ph-icon"><img src="<?php echo poorthuis_img( '../icons/modificatie.svg' ); ?>" alt="" width="24" height="24"></span>
 <!-- /wp:html -->
-<!-- wp:paragraph {"className":"ph-tile-title"} -->
-<p class="ph-tile-title">Service en techniek</p>
-<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Service en techniek</h3>
+<!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>Meewerken aan service op locatie en aan het analyseren en oplossen van technische vraagstukken.</p>
 <!-- /wp:paragraph -->
