@@ -9,30 +9,29 @@ defined( 'ABSPATH' ) || exit;
 
 const POORTHUIS_UPDATE_REPO = 'ejmlubbers/poorthuis-wp-thema';
 
-/** Laatste release van GitHub (6 uur bewaard, zodat we GitHub niet bij elke pagina vragen). */
+/**
+ * Nieuwste versie op GitHub. Leest het versienummer uit style.css op raw.githubusercontent.com
+ * (geen API, dus geen limiet van 60 vragen per uur per server) en downloadt de zip van de release.
+ * Bewaard: 6 uur als het lukt, 15 minuten als GitHub niet bereikbaar was.
+ */
 function poorthuis_laatste_release(): ?array {
 	$cached = get_site_transient( 'poorthuis_release' );
 	if ( is_array( $cached ) ) {
 		return $cached ?: null;
 	}
-	$res  = wp_remote_get( 'https://api.github.com/repos/' . POORTHUIS_UPDATE_REPO . '/releases/latest', [
+	$res = wp_remote_get( 'https://raw.githubusercontent.com/' . POORTHUIS_UPDATE_REPO . '/main/style.css', [
 		'timeout' => 8,
-		'headers' => [ 'Accept' => 'application/vnd.github+json', 'User-Agent' => 'poorthuis-theme' ],
+		'headers' => [ 'User-Agent' => 'poorthuis-theme' ],
 	] );
-	$data = json_decode( (string) wp_remote_retrieve_body( $res ), true );
-	$out  = [];
-	if ( 200 === wp_remote_retrieve_response_code( $res ) && ! empty( $data['tag_name'] ) ) {
-		foreach ( (array) ( $data['assets'] ?? [] ) as $asset ) {
-			if ( 'poorthuis.zip' === ( $asset['name'] ?? '' ) ) {
-				$out = [
-					'version' => ltrim( (string) $data['tag_name'], 'vV' ),
-					'url'     => (string) ( $data['html_url'] ?? '' ),
-					'package' => (string) $asset['browser_download_url'],
-				];
-			}
-		}
+	$out = [];
+	if ( 200 === wp_remote_retrieve_response_code( $res ) && preg_match( '/^Version:\s*([0-9][0-9.]*)/m', (string) wp_remote_retrieve_body( $res ), $m ) ) {
+		$out = [
+			'version' => $m[1],
+			'url'     => 'https://github.com/' . POORTHUIS_UPDATE_REPO . '/releases/tag/v' . $m[1],
+			'package' => 'https://github.com/' . POORTHUIS_UPDATE_REPO . '/releases/download/v' . $m[1] . '/poorthuis.zip',
+		];
 	}
-	set_site_transient( 'poorthuis_release', $out, $out ? 6 * HOUR_IN_SECONDS : HOUR_IN_SECONDS );
+	set_site_transient( 'poorthuis_release', $out, $out ? 6 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS );
 	return $out ?: null;
 }
 
