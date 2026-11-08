@@ -48,8 +48,9 @@ const POORTHUIS_OUDE_ADRESSEN = [
 	],
 ];
 
-add_action( 'template_redirect', function () {
-	if ( ! is_404() ) {
+// Vroeg (parse_request): WordPress/Polylang zien /language/nl/… anders als taalarchief en sturen naar home.
+add_action( 'parse_request', function () {
+	if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 		return;
 	}
 	$path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
@@ -61,4 +62,4 @@ add_action( 'template_redirect', function () {
 	$home = [ 'nl' => '/', 'en' => '/en/', 'de' => '/de/' ][ $lang ];
 	wp_safe_redirect( home_url( POORTHUIS_OUDE_ADRESSEN[ $lang ][ $slug ] ?? $home ), 301, 'Poorthuis' );
 	exit;
-}, 1 );
+}, 0 );
