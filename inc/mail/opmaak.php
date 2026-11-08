@@ -52,19 +52,17 @@ function poorthuis_mail_bovenkop( string $text ): string {
 }
 
 /**
- * Het omhulsel: helemaal wit, bovenaan alleen het logo, daaronder de inhoud en een kleine voetregel.
+ * Het omhulsel: helemaal wit, bovenaan alleen het logo (niet in de bevestiging: daar staat het in de handtekening), daaronder de inhoud en een kleine voetregel.
  * $preheader is de grijze voorbeeldregel die mailprogramma's naast het onderwerp tonen.
  */
-function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, bool $en ): string {
+function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, bool $en, bool $logo = true ): string {
 	$f = POORTHUIS_MAIL_FONT;
 	return '<!DOCTYPE html><html lang="' . ( $en ? 'en' : 'nl' ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poorthuis</title></head>'
 		. '<body style="margin:0;padding:0;background-color:#FFFFFF;">'
 		. '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">' . esc_html( $preheader ) . '</div>'
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" style="border-collapse:collapse;background-color:#FFFFFF;"><tr><td style="padding:28px 24px;">'
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:100%;max-width:600px;border-collapse:collapse;">'
-		. '<tr><td style="padding:0 0 30px 0;">'
-		. '<a href="https://poorthuis.com" style="text-decoration:none;"><img src="' . POORTHUIS_MAIL_LOGO . '" width="199" height="45" alt="Poorthuis – Solutions by specialists" style="display:block;width:199px;height:45px;border:0;font-family:' . $f . ';font-size:16px;font-weight:bold;color:' . POORTHUIS_MAIL_BLAUW . ';"></a>'
-		. '</td></tr>'
+		. ( $logo ? '<tr><td style="padding:0 0 30px 0;">' . '<a href="https://poorthuis.com" style="text-decoration:none;"><img src="' . POORTHUIS_MAIL_LOGO . '" width="199" height="45" alt="Poorthuis – Solutions by specialists" style="display:block;width:199px;height:45px;border:0;font-family:' . $f . ';font-size:16px;font-weight:bold;color:' . POORTHUIS_MAIL_BLAUW . ';"></a>' . '</td></tr>' : '' )
 		. '<tr><td style="font-family:' . $f . ';font-size:15px;line-height:23px;color:' . POORTHUIS_MAIL_INKT . ';">' . $inhoud . '</td></tr>'
 		. '<tr><td style="padding:26px 0 0 0;font-family:' . $f . ';font-size:12px;line-height:18px;color:' . POORTHUIS_MAIL_GRIJS . ';">' . $voet . '</td></tr>'
 		. '</table></td></tr></table></body></html>';
@@ -105,5 +103,5 @@ function poorthuis_mail_bevestiging( array $args ): string {
 	$voet   = $en
 		? 'This is an automatic confirmation. You can simply reply to this email.'
 		: ( $args['je'] ? 'Dit is een automatische bevestiging. Je kunt gewoon op deze mail reageren.' : 'Dit is een automatische bevestiging. U kunt gewoon op deze mail reageren.' );
-	return poorthuis_mail_omhulsel( $inhoud, $args['regels'][0] ?? '', $voet, $en );
+	return poorthuis_mail_omhulsel( $inhoud, $args['regels'][0] ?? '', $voet, $en, false ); // logo staat al in de handtekening
 }
