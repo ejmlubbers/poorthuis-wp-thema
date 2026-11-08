@@ -15,7 +15,7 @@ const POORTHUIS_MAIL_GRIJS = '#6B6B7B';
 const POORTHUIS_MAIL_LIJN  = '#E1E0EA';
 const POORTHUIS_MAIL_PAPER = '#F5F5F8';
 const POORTHUIS_MAIL_FONT  = 'Arial, Helvetica, sans-serif';
-const POORTHUIS_MAIL_LOGO  = 'https://poorthuis.com/wp-content/uploads/2026/11/poorthuis-logo-p-donker-2x.png';
+const POORTHUIS_MAIL_LOGO  = 'https://poorthuis.com/wp-content/uploads/2026/11/poorthuis-logo-p-2x.png';
 
 /** De algemene mailhandtekening (gemaakt met docs/mailhandtekening/handtekening.js). */
 function poorthuis_mail_handtekening( bool $en ): string {
@@ -52,27 +52,21 @@ function poorthuis_mail_bovenkop( string $text ): string {
 }
 
 /**
- * Het omhulsel: blauwe kop met logo, gele lijn, witte inhoud, kleine voetregel.
+ * Het omhulsel: helemaal wit, bovenaan alleen het logo, daaronder de inhoud en een kleine voetregel.
  * $preheader is de grijze voorbeeldregel die mailprogramma's naast het onderwerp tonen.
  */
 function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, bool $en ): string {
 	$f = POORTHUIS_MAIL_FONT;
-	return '<!DOCTYPE html><html lang="' . ( $en ? 'en' : 'nl' ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Poorthuis</title></head>'
-		. '<body style="margin:0;padding:0;background-color:' . POORTHUIS_MAIL_PAPER . ';">'
+	return '<!DOCTYPE html><html lang="' . ( $en ? 'en' : 'nl' ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poorthuis</title></head>'
+		. '<body style="margin:0;padding:0;background-color:#FFFFFF;">'
 		. '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">' . esc_html( $preheader ) . '</div>'
-		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="' . POORTHUIS_MAIL_PAPER . '" style="border-collapse:collapse;background-color:' . POORTHUIS_MAIL_PAPER . ';"><tr><td align="center" style="padding:28px 12px;">'
+		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" style="border-collapse:collapse;background-color:#FFFFFF;"><tr><td style="padding:28px 24px;">'
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:100%;max-width:600px;border-collapse:collapse;">'
-		// kop
-		. '<tr><td bgcolor="' . POORTHUIS_MAIL_BLAUW . '" style="background-color:' . POORTHUIS_MAIL_BLAUW . ';padding:22px 32px;border-radius:12px 12px 0 0;">'
-		. '<a href="https://poorthuis.com" style="text-decoration:none;"><img src="' . POORTHUIS_MAIL_LOGO . '" width="199" height="45" alt="Poorthuis – Solutions by specialists" style="display:block;width:199px;height:45px;border:0;font-family:' . $f . ';font-size:16px;font-weight:bold;color:#FFFFFF;"></a>'
+		. '<tr><td style="padding:0 0 30px 0;">'
+		. '<a href="https://poorthuis.com" style="text-decoration:none;"><img src="' . POORTHUIS_MAIL_LOGO . '" width="199" height="45" alt="Poorthuis – Solutions by specialists" style="display:block;width:199px;height:45px;border:0;font-family:' . $f . ';font-size:16px;font-weight:bold;color:' . POORTHUIS_MAIL_BLAUW . ';"></a>'
 		. '</td></tr>'
-		. '<tr><td height="4" bgcolor="' . POORTHUIS_MAIL_GEEL . '" style="height:4px;line-height:4px;font-size:0;background-color:' . POORTHUIS_MAIL_GEEL . ';">&nbsp;</td></tr>'
-		// inhoud
-		. '<tr><td bgcolor="#FFFFFF" style="background-color:#FFFFFF;padding:34px 32px 30px 32px;border-radius:0 0 12px 12px;font-family:' . $f . ';font-size:15px;line-height:23px;color:' . POORTHUIS_MAIL_INKT . ';">'
-		. $inhoud
-		. '</td></tr>'
-		// voet
-		. '<tr><td style="padding:18px 32px 0 32px;font-family:' . $f . ';font-size:12px;line-height:18px;color:' . POORTHUIS_MAIL_GRIJS . ';text-align:center;">' . $voet . '</td></tr>'
+		. '<tr><td style="font-family:' . $f . ';font-size:15px;line-height:23px;color:' . POORTHUIS_MAIL_INKT . ';">' . $inhoud . '</td></tr>'
+		. '<tr><td style="padding:26px 0 0 0;font-family:' . $f . ';font-size:12px;line-height:18px;color:' . POORTHUIS_MAIL_GRIJS . ';">' . $voet . '</td></tr>'
 		. '</table></td></tr></table></body></html>';
 }
 
