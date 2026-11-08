@@ -18,3 +18,4 @@ require __DIR__ . '/inc/contact.php';
 require __DIR__ . '/inc/cookies.php';
 require __DIR__ . '/inc/inrichten.php';
 require __DIR__ . '/inc/redirects.php';
+require __DIR__ . '/inc/updates.php';
