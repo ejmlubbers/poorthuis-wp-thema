@@ -20,7 +20,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 // Pagina's die met een donkere sectie beginnen: de kop ligt daar doorzichtig overheen (zoals in de demo).
 add_filter( 'body_class', function ( $classes ) {
-	if ( is_front_page() ) {
+	if ( is_front_page() || is_singular( 'vacature' ) ) {
 		$classes[] = 'ph-dark-top';
 	} elseif ( is_singular() ) {
 		$start = substr( (string) get_post_field( 'post_content', get_queried_object_id() ), 0, 600 );

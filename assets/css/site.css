@@ -277,3 +277,25 @@ body { -webkit-font-smoothing: antialiased; }
 @media (min-width: 782px) { .ph-foot-toggle { cursor: default; } .ph-foot-toggle::after { display: none; } }
 .ph-dark .ph-meta-dienstverband::before, .ph-dark .ph-meta-locatie::before { color: rgba(255,255,255,.6); }
 .ph-dark .ph-job-meta p { color: #fff; }
+
+/* ---------- Vacaturepagina ---------- */
+.single-vacature main > .ph-dark:first-child { padding-top: calc(77px + var(--wp--preset--spacing--60)) !important; }
+.ph-back { margin: 0 0 22px !important; font-size: 14.5px; }
+.ph-back a { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; padding: 8px 16px 8px 12px; border: 1.5px solid rgba(255,255,255,.3); border-radius: 999px; transition: border-color .2s, color .2s; }
+.ph-back a span { transition: transform .2s ease; }
+.ph-back a:hover { border-color: var(--wp--preset--color--yellow); color: var(--wp--preset--color--yellow); }
+.ph-back a:hover span { transform: translateX(-4px); }
+.ph-stage-photo { margin: 34px 0 30px !important; }
+.ph-stage-photo img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; border-radius: 18px; }
+.ph-stage-h3 { margin-top: 46px !important; }
+.ph-tiles { gap: 14px !important; margin: 24px 0 26px !important; }
+.ph-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+@media (max-width: 560px) { .ph-tiles { grid-template-columns: 1fr !important; } }
+.ph-tile { background: var(--wp--preset--color--paper); border: 1px solid var(--wp--preset--color--line); border-radius: 16px; padding: 22px 22px 20px; transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s; }
+.ph-tile:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -24px rgba(20,16,61,.35); }
+.ph-tile .ph-icon { background: #fff; margin-bottom: 14px; }
+.ph-tile p { margin: 0; font-size: 15.5px; color: var(--wp--preset--color--ink-2); }
+.ph-tile .ph-tile-title { color: var(--wp--preset--color--blue); font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+.ph-callout { background: #FFF8DB; border-left: 3px solid var(--wp--preset--color--yellow); border-radius: 0 12px 12px 0; padding: 16px 20px; }
+/* donkere kop met foto onder een blauw filter (zoals de andere paginakoppen) */
+.ph-vacancy-hero.ph-vacancy-hero { background: linear-gradient(90deg, rgba(26,26,57,.94) 0%, rgba(40,37,110,.84) 45%, rgba(48,46,128,.66) 100%), url("../images/al-70-jaar.webp") center 40% / cover no-repeat !important; }
