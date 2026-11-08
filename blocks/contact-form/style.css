@@ -1,6 +1,9 @@
 .ph-form { background: var(--wp--preset--color--paper); padding: clamp(22px, 2.6vw, 34px); border-radius: 15px; display: flex; flex-direction: column; gap: 16px; }
 .ph-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .ph-form--kort .ph-form-grid { grid-template-columns: 1fr; }
+/* naar één kolom zodra het formulier zelf smal is (bijv. in de zijkolom van een vacature), niet pas op mobiel */
+.ph-form { container-type: inline-size; }
+@container (max-width: 440px) { .ph-form-grid { grid-template-columns: 1fr; } }
 .ph-field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
 .ph-field input, .ph-field textarea { width: 100%; min-width: 0; box-sizing: border-box; }
 .ph-field.is-wide { grid-column: 1 / -1; }

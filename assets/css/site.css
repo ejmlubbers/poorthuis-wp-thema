@@ -105,8 +105,8 @@ body { -webkit-font-smoothing: antialiased; }
 
 /* ---------- Lijst met vinkjes ---------- */
 .is-style-vinkjes { list-style: none; padding-left: 0; display: grid; gap: 10px; }
-.is-style-vinkjes li { display: flex; gap: 12px; align-items: flex-start; }
-.is-style-vinkjes li::before { content: ""; width: 18px; height: 18px; flex: none; margin-top: 4px; background: var(--wp--preset--color--blue); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; }
+.is-style-vinkjes li { position: relative; padding-left: 30px; } /* tekst loopt gewoon door, ook met een vetgedrukt begin */
+.is-style-vinkjes li::before { content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: var(--wp--preset--color--blue); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 12.5l4.5 4.5 10.5-11'/%3E%3C/svg%3E") center / contain no-repeat; }
 
 /* ---------- Jaartal-badge op een foto ---------- */
 .ph-badge-wrap { position: relative; }
@@ -122,6 +122,11 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-jobs .wp-block-post { background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 14px; padding: 24px 28px; transition: border-color .2s, box-shadow .2s; }
 .ph-jobs .wp-block-post:hover { border-color: var(--wp--preset--color--blue); box-shadow: 0 14px 30px -20px rgba(48,38,135,.45); }
 .ph-jobs .wp-block-post-title a { text-decoration: none; color: var(--wp--preset--color--blue); }
+/* hele vacaturekaart klikbaar: de titellink spant over de kaart, de Solliciteer-knop blijft erboven */
+.ph-jobs .wp-block-post { position: relative; cursor: pointer; }
+.ph-jobs .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.ph-jobs .ph-job-link { position: relative; z-index: 2; }
+.ph-jobs .wp-block-post:hover .wp-block-post-title a { text-decoration: underline; text-underline-offset: 4px; }
 .ph-job-meta p { font-size: 12.5px; letter-spacing: .04em; margin: 0; }
 
 /* ---------- Homepage-hero ---------- */
