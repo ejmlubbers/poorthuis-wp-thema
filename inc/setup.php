@@ -90,3 +90,9 @@ add_action( 'init', function () {
 function poorthuis_img( string $file ): string {
 	return esc_url( get_theme_file_uri( 'assets/images/' . $file ) );
 }
+
+// Afzendernaam van alle mails van de site (formulieren, bevestigingen): niet "WordPress" maar Poorthuis.
+// Het afzenderadres zelf komt van de mailkoppeling (Easy WP SMTP / Microsoft 365).
+add_filter( 'wp_mail_from_name', function ( $name ) {
+	return ( '' === (string) $name || 'WordPress' === $name ) ? 'Poorthuis Industrial Services' : $name;
+}, 20 );
