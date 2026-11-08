@@ -56,15 +56,15 @@ function poorthuis_form_autoreply( string $to, string $name, string $variant, bo
 		$titel   = $je ? 'Thank you for your application' : 'Thank you for your message';
 		$aanhef  = $name ? 'Dear ' . $name . ',' : 'Hello,';
 		$regels  = $je
-			? [ 'Thank you for your application. We have received it and will be in touch with you soon.' ]
-			: [ 'Thank you for your message. We have received it and will get back to you shortly.', 'Is it urgent, for example a breakdown? Please call us directly on +31 541 513 415.' ];
+			? [ 'Thank you for your application. We have received it and will be in touch with you soon.', 'You can simply reply to this email. Do you have an urgent question? Then call us on +31 541 513 415.' ]
+			: [ 'Thank you for your message. We have received it and will get back to you shortly.', 'You can simply reply to this email. Do you have an urgent question or a breakdown? Then call us directly on +31 541 513 415.' ];
 	} else {
 		$subject = $je ? 'Bedankt voor je aanmelding – Poorthuis Industrial Services' : 'Bedankt voor uw bericht – Poorthuis Industrial Services';
 		$titel   = $je ? 'Bedankt voor je aanmelding' : 'Bedankt voor uw bericht';
 		$aanhef  = $name ? ( $je ? 'Hoi ' : 'Beste ' ) . $name . ',' : ( $je ? 'Hoi,' : 'Beste heer/mevrouw,' );
 		$regels  = $je
-			? [ 'Bedankt voor je aanmelding! We hebben hem goed ontvangen en nemen snel contact met je op.' ]
-			: [ 'Bedankt voor uw bericht. Wij hebben het goed ontvangen en nemen binnen korte tijd contact met u op.', 'Heeft u een storing of is het spoed? Bel ons dan direct op +31 541 513 415.' ];
+			? [ 'Bedankt voor je aanmelding! We hebben hem goed ontvangen en nemen snel contact met je op.', 'Je kunt gewoon reageren op deze mail. Heb je een dringende vraag? Bel ons dan op +31 541 513 415.' ]
+			: [ 'Bedankt voor uw bericht. Wij hebben het goed ontvangen en nemen binnen korte tijd contact met u op.', 'U kunt gewoon reageren op deze mail. Heeft u een dringende vraag of spoed? Bel ons dan direct op +31 541 513 415.' ];
 	}
 	$body = poorthuis_mail_bevestiging( compact( 'en', 'je', 'titel', 'aanhef', 'regels', 'velden' ) );
 	return wp_mail( $to, $subject, $body, [ 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . poorthuis_form_recipient() ] );

@@ -21,14 +21,13 @@ const POORTHUIS_MAIL_LOGO  = 'https://poorthuis.com/wp-content/uploads/2026/11/p
 function poorthuis_mail_handtekening( bool $en ): string {
 	$file = __DIR__ . '/handtekening-' . ( $en ? 'en' : 'nl' ) . '.html';
 	$html = is_readable( $file ) ? (string) file_get_contents( $file ) : '';
-	// De smalle streep uit de Outlook-handtekening is hier vervangen door een brede, rustigere
-	// streep over de volle breedte van de mail (assets/images/mail-streep-2x.png).
-	$streep = '</table>' // sluit de handtekeningtabel; de streep krijgt de volle breedte
-		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin-top:16px;"><tr>'
-		. '<td height="10" bgcolor="' . POORTHUIS_MAIL_GEEL . '" style="height:10px;line-height:10px;font-size:0;background-color:' . POORTHUIS_MAIL_GEEL . ';padding:0;">'
-		. '<img src="' . esc_url( get_theme_file_uri( 'assets/images/mail-streep-2x.png' ) ) . '" width="600" height="10" alt="" style="display:block;width:100%;max-width:600px;height:10px;border:0;">'
-		. '</td></tr></table>'
-		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">'; // voor de disclaimer
+	// Streep onder de handtekening: even breed als de handtekening, iets dunner en rustiger
+	// dan in de Outlook-versie (assets/images/mail-streep-2x.png).
+	$streep = '<tr><td style="padding:16px 0 0 0;">'
+		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="460" style="width:460px;border-collapse:collapse;"><tr>'
+		. '<td height="6" bgcolor="' . POORTHUIS_MAIL_GEEL . '" style="height:6px;line-height:6px;font-size:0;background-color:' . POORTHUIS_MAIL_GEEL . ';padding:0;">'
+		. '<img src="' . esc_url( get_theme_file_uri( 'assets/images/mail-streep-2x.png' ) ) . '" width="460" height="6" alt="" style="display:block;width:460px;height:6px;border:0;">'
+		. '</td></tr></table></td></tr>';
 	return str_replace( '<!--STREEP-->', $streep, $html );
 }
 
@@ -61,7 +60,7 @@ function poorthuis_mail_bovenkop( string $text ): string {
 }
 
 /**
- * Het omhulsel: helemaal wit, bovenaan alleen het logo (niet in de bevestiging: daar staat het in de handtekening), daaronder de inhoud en een kleine voetregel.
+ * Het omhulsel: helemaal wit, bovenaan alleen het logo (niet in de bevestiging: daar staat het in de handtekening), daaronder de inhoud en (alleen bij de inzending) een kleine voetregel.
  * $preheader is de grijze voorbeeldregel die mailprogramma's naast het onderwerp tonen.
  */
 function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, bool $en, bool $logo = true ): string {
@@ -73,7 +72,7 @@ function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voe
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="width:100%;max-width:600px;border-collapse:collapse;">'
 		. ( $logo ? '<tr><td style="padding:0 0 30px 0;">' . '<a href="https://poorthuis.com" style="text-decoration:none;"><img src="' . POORTHUIS_MAIL_LOGO . '" width="199" height="45" alt="Poorthuis – Solutions by specialists" style="display:block;width:199px;height:45px;border:0;font-family:' . $f . ';font-size:16px;font-weight:bold;color:' . POORTHUIS_MAIL_BLAUW . ';"></a>' . '</td></tr>' : '' )
 		. '<tr><td style="font-family:' . $f . ';font-size:15px;line-height:23px;color:' . POORTHUIS_MAIL_INKT . ';">' . $inhoud . '</td></tr>'
-		. '<tr><td style="padding:26px 0 0 0;font-family:' . $f . ';font-size:12px;line-height:18px;color:' . POORTHUIS_MAIL_GRIJS . ';">' . $voet . '</td></tr>'
+		. ( $voet ? '<tr><td style="padding:26px 0 0 0;font-family:' . $f . ';font-size:12px;line-height:18px;color:' . POORTHUIS_MAIL_GRIJS . ';">' . $voet . '</td></tr>' : '' )
 		. '</table></td></tr></table></body></html>';
 }
 
@@ -109,8 +108,6 @@ function poorthuis_mail_bevestiging( array $args ): string {
 		. poorthuis_mail_velden( $args['velden'] )
 		. '</td></tr></table>'
 		. poorthuis_mail_handtekening( $en );
-	$voet   = $en
-		? 'This is an automatic confirmation. You can simply reply to this email.'
-		: ( $args['je'] ? 'Dit is een automatische bevestiging. Je kunt gewoon op deze mail reageren.' : 'Dit is een automatische bevestiging. U kunt gewoon op deze mail reageren.' );
+	$voet   = '';
 	return poorthuis_mail_omhulsel( $inhoud, $args['regels'][0] ?? '', $voet, $en, false ); // logo staat al in de handtekening
 }
