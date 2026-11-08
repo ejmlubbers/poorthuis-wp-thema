@@ -127,7 +127,7 @@
 <li><strong>Necessary:</strong> we remember your cookie choice so you don’t see the notice every time. No consent is needed for this.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
-<li><strong>Statistics:</strong> if you click “Accept”, Google Analytics places cookies to measure how visitors use the website. We only use this information to improve the website. If you click “Necessary only”, these cookies are not placed.</li>
+<li><strong>Statistics:</strong> if you click “Allow analytical cookies”, Google Analytics places cookies to measure how visitors use the website. We only use this information to improve the website. If you click “Necessary cookies only”, these cookies are not placed.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
 <li><strong>Video:</strong> the company film is only loaded from YouTube when you click on it. Only then can YouTube place cookies.</li>

@@ -127,7 +127,7 @@
 <li><strong>Noodzakelijk:</strong> wij onthouden uw cookiekeuze, zodat u de melding niet steeds opnieuw ziet. Hiervoor is geen toestemming nodig.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
-<li><strong>Statistieken:</strong> als u op “Accepteren” klikt, plaatst Google Analytics cookies om te meten hoe bezoekers de website gebruiken. Wij gebruiken die informatie alleen om de website te verbeteren. Klikt u op “Alleen noodzakelijk”, dan worden deze cookies niet geplaatst.</li>
+<li><strong>Statistieken:</strong> als u op “Analytische cookies toestaan” klikt, plaatst Google Analytics cookies om te meten hoe bezoekers de website gebruiken. Wij gebruiken die informatie alleen om de website te verbeteren. Klikt u op “Alleen noodzakelijke cookies”, dan worden deze cookies niet geplaatst.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
 <li><strong>Video:</strong> de bedrijfsfilm wordt pas van YouTube geladen als u erop klikt. Pas dan kan YouTube cookies plaatsen.</li>

@@ -48,15 +48,15 @@ add_action( 'wp_footer', function () {
 		<p class="ph-cookie-title"><?php echo esc_html( poorthuis_t( 'Cookies', 'Cookies', 'Cookies' ) ); ?></p>
 		<p class="ph-cookie-text"><?php echo wp_kses_post( sprintf(
 			poorthuis_t(
-				'Voor de beste gebruikerservaring gebruiken wij cookies. Daarmee meten we anoniem hoe onze website wordt gebruikt, zodat we hem kunnen verbeteren. Meer hierover leest u in onze <a href="%s">privacyverklaring</a>.',
-				'We use cookies to give you the best experience on our website. They let us measure anonymously how the site is used, so we can improve it. Read more in our <a href="%s">privacy statement</a>.',
-				'Für die beste Nutzererfahrung verwenden wir Cookies. Damit messen wir anonym, wie unsere Website genutzt wird, um sie zu verbessern. Mehr dazu in unserer <a href="%s">Datenschutzerklärung</a>.'
+				'Met analytische cookies meten we het gebruik van onze website. Die informatie gebruiken we om de site te verbeteren. Lees meer in onze <a href="%s">privacyverklaring</a>.',
+				'Analytical cookies let us measure how our website is used. We use that information to improve the site. Read more in our <a href="%s">privacy statement</a>.',
+				'Mit Analyse-Cookies messen wir die Nutzung unserer Website. Diese Informationen nutzen wir, um die Website zu verbessern. Mehr dazu in unserer <a href="%s">Datenschutzerklärung</a>.'
 			),
 			poorthuis_url( '/privacyverklaring/' )
 		) ); ?></p>
 		<div class="ph-cookie-buttons">
-			<button type="button" class="ph-cookie-yes"><?php echo esc_html( poorthuis_t( 'Accepteren', 'Accept', 'Akzeptieren' ) ); ?></button>
-			<button type="button" class="ph-cookie-no"><?php echo esc_html( poorthuis_t( 'Alleen noodzakelijk', 'Necessary only', 'Nur notwendige' ) ); ?></button>
+			<button type="button" class="ph-cookie-yes"><?php echo esc_html( poorthuis_t( 'Analytische cookies toestaan', 'Allow analytical cookies', 'Analyse-Cookies zulassen' ) ); ?></button>
+			<button type="button" class="ph-cookie-no"><?php echo esc_html( poorthuis_t( 'Alleen noodzakelijke cookies', 'Necessary cookies only', 'Nur notwendige Cookies' ) ); ?></button>
 		</div>
 	</div>
 	<?php
