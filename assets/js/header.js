@@ -1,8 +1,8 @@
-/* Kop: op de homepage doorzichtig over de hero, wit zodra je scrolt.
+/* Kop: doorzichtig over een donkere eerste sectie (body.ph-dark-top), wit zodra je scrolt.
    Voet: op mobiel zijn Menu en Informatie uitklapbaar. */
 ( function () {
 	const header = document.querySelector( '.ph-header' );
-	if ( ! header || ! document.body.classList.contains( 'home' ) ) return;
+	if ( ! header || ! document.body.classList.contains( 'ph-dark-top' ) ) return;
 	header.classList.add( 'is-overlay' );
 	const update = () => header.classList.toggle( 'is-scrolled', window.scrollY > 40 );
 	update();

@@ -18,6 +18,19 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'poorthuis-header', get_theme_file_uri( 'assets/js/header.js' ), [], POORTHUIS_VERSION, [ 'strategy' => 'defer', 'in_footer' => true ] );
 } );
 
+// Pagina's die met een donkere sectie beginnen: de kop ligt daar doorzichtig overheen (zoals in de demo).
+add_filter( 'body_class', function ( $classes ) {
+	if ( is_front_page() ) {
+		$classes[] = 'ph-dark-top';
+	} elseif ( is_singular() ) {
+		$start = substr( (string) get_post_field( 'post_content', get_queried_object_id() ), 0, 600 );
+		if ( preg_match( '/ph-(page-)?hero\b/', $start ) ) {
+			$classes[] = 'ph-dark-top';
+		}
+	}
+	return $classes;
+} );
+
 // Overhead die deze site niet gebruikt.
 add_action( 'init', function () {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

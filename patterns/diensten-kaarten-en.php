@@ -20,8 +20,8 @@
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:group {"align":"wide","className":"ph-cards","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"grid","minimumColumnWidth":"270px"}} -->
-<div class="wp-block-group alignwide ph-cards" style="margin-top:var(--wp--preset--spacing--50)">
+<!-- wp:group {"align":"wide","className":"ph-cards ph-svc-grid","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"grid","minimumColumnWidth":"270px"}} -->
+<div class="wp-block-group alignwide ph-cards ph-svc-grid" style="margin-top:var(--wp--preset--spacing--50)">
 <!-- wp:group {"className":"is-style-kaart","layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-kaart">
 <!-- wp:paragraph {"className":"ph-card-num"} -->

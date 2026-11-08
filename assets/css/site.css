@@ -35,8 +35,12 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-header.is-overlay:not(.is-scrolled) .ph-phone,
 .ph-header.is-overlay:not(.is-scrolled) .wp-block-navigation__responsive-container-open { color: #fff; }
 .ph-header.is-overlay.is-scrolled { box-shadow: 0 6px 24px -18px rgba(20,16,61,.5); }
-.home .wp-site-blocks > header.wp-block-template-part { margin-bottom: -77px; }
+.ph-dark-top .wp-site-blocks > header.wp-block-template-part { margin-bottom: -77px; }
+/* donkere paginakop schuift onder de doorzichtige kop door */
+.ph-dark-top .ph-page-hero { padding-top: calc(77px + var(--wp--preset--spacing--70)) !important; }
 .wp-site-blocks > header.wp-block-template-part + * { margin-block-start: 0; }
+/* secties sluiten op elkaar aan, zoals in de demo (geen witte strook tussen de banden) */
+.wp-block-post-content > .alignfull, .wp-site-blocks > main > .alignfull, .wp-site-blocks > footer.wp-block-template-part { margin-block-start: 0 !important; }
 
 /* ---------- Typografie-hulp ---------- */
 .is-style-eyebrow { display: inline-flex !important; align-items: center; gap: 12px; font-size: 13.5px !important; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--wp--preset--color--blue) !important; margin-bottom: 0 !important; }
@@ -146,6 +150,10 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-map { width: 100%; height: 300px; border: 0; border-radius: 15px; margin-top: 12px; }
 .ph-contact-lines { line-height: 1.9; }
 .ph-cards { gap: 20px !important; }
+/* dienstkaarten op de homepage: 3 naast elkaar (3 + 2 met de gele hulpkaart), zoals in de demo */
+.ph-svc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+@media (max-width: 960px) { .ph-svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 600px) { .ph-svc-grid { grid-template-columns: 1fr !important; } }
 .wp-block-image.is-resized img { width: 100%; }
 
 /* ---------- Kleine schermen ---------- */
@@ -213,7 +221,7 @@ body { -webkit-font-smoothing: antialiased; }
 .is-style-kaart.has-yellow-background-color .ph-icon { background: rgba(255,255,255,.22); }
 
 /* paginakoppen breken zoals in de demo (smalle titelkolom) */
-.ph-page-hero h1 { max-width: 16ch; }
+.ph-page-hero h1 { max-width: 18ch; text-wrap: wrap; } /* zoals de demo: niet uitbalanceren, breedte 18 tekens */
 
 /* ---------- Werken bij: menneke met lasmasker in de kop ---------- */
 .ph-hero-figure { position: absolute !important; right: clamp(16px, 12vw, 180px); top: 102px; margin: 0 !important; max-width: none !important; z-index: 1; pointer-events: none; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
