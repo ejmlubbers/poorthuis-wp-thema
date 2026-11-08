@@ -45,14 +45,6 @@ function poorthuis_mail_velden( array $rows ): string {
 	return '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">' . $out . '</table>';
 }
 
-/** Knop die ook in Outlook een knop blijft (gevulde tabelcel). */
-function poorthuis_mail_knop( string $href, string $text ): string {
-	return '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>'
-		. '<td bgcolor="' . POORTHUIS_MAIL_BLAUW . '" style="background-color:' . POORTHUIS_MAIL_BLAUW . ';border-radius:24px;padding:12px 26px;">'
-		. '<a href="' . esc_url( $href ) . '" style="font-family:' . POORTHUIS_MAIL_FONT . ';font-size:15px;line-height:18px;font-weight:bold;color:#FFFFFF;text-decoration:none;">' . esc_html( $text ) . ' &rarr;</a>'
-		. '</td></tr></table>';
-}
-
 /** Kleine bovenkop met gele streep ervoor, zoals op de site. */
 function poorthuis_mail_bovenkop( string $text ): string {
 	return '<p style="margin:0 0 10px 0;font-family:' . POORTHUIS_MAIL_FONT . ';font-size:11px;line-height:16px;letter-spacing:1.5px;text-transform:uppercase;color:' . POORTHUIS_MAIL_BLAUW . ';">'
@@ -82,14 +74,11 @@ function poorthuis_mail_inzending( array $args ): string {
 	$naam     = $args['naam'] ?: $args['email'];
 	$soort    = $args['soort'];               // bijv. "Contactformulier"
 	$taal     = $args['en'] ? 'Engelstalig' : 'Nederlandstalig';
-	$reply    = 'mailto:' . rawurlencode( $args['email'] ) . '?subject=' . rawurlencode( 'Re: ' . $args['onderwerp'] );
 	$inhoud   = poorthuis_mail_bovenkop( $soort . ' · ' . $taal )
 		. '<h1 style="margin:0 0 6px 0;font-family:' . $f . ';font-size:24px;line-height:30px;font-weight:normal;color:' . POORTHUIS_MAIL_BLAUW . ';">Nieuw bericht van ' . esc_html( $naam ) . '</h1>'
 		. '<p style="margin:0 0 22px 0;color:' . POORTHUIS_MAIL_GRIJS . ';font-size:14px;">Ingevuld op ' . esc_html( $args['wanneer'] ) . '</p>'
 		. poorthuis_mail_velden( $args['velden'] )
-		. ( $args['bijlage'] ? '<p style="margin:16px 0 0 0;font-size:14px;color:' . POORTHUIS_MAIL_INKT . ';">&#128206; Het cv zit als bijlage bij deze mail.</p>' : '' )
-		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;margin-top:26px;"><tr><td>' . poorthuis_mail_knop( $reply, 'Beantwoord ' . ( $args['naam'] ?: 'afzender' ) ) . '</td></tr></table>'
-		. '<p style="margin:14px 0 0 0;font-size:13px;line-height:19px;color:' . POORTHUIS_MAIL_GRIJS . ';">Of klik gewoon op Beantwoorden: uw antwoord gaat dan direct naar ' . esc_html( $args['email'] ) . '.</p>';
+		. ( $args['bijlage'] ? '<p style="margin:16px 0 0 0;font-size:14px;color:' . POORTHUIS_MAIL_INKT . ';">&#128206; Het cv zit als bijlage bij deze mail.</p>' : '' );
 	$voet     = 'Verstuurd via het formulier op <a href="' . esc_url( $args['pagina'] ) . '" style="color:' . POORTHUIS_MAIL_GRIJS . ';">' . esc_html( preg_replace( '#^https?://#', '', $args['pagina'] ) ) . '</a>';
 	return poorthuis_mail_omhulsel( $inhoud, $soort . ' van ' . $naam, $voet, false );
 }
@@ -103,7 +92,7 @@ function poorthuis_mail_bevestiging( array $args ): string {
 		. $p( $args['aanhef'] )
 		. implode( '', array_map( $p, $args['regels'] ) )
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin:10px 0 28px 0;"><tr>'
-		. '<td bgcolor="' . POORTHUIS_MAIL_PAPER . '" style="background-color:' . POORTHUIS_MAIL_PAPER . ';border-left:3px solid ' . POORTHUIS_MAIL_GEEL . ';padding:18px 20px 12px 20px;">'
+		. '<td bgcolor="' . POORTHUIS_MAIL_PAPER . '" style="background-color:' . POORTHUIS_MAIL_PAPER . ';padding:18px 20px 12px 20px;">'
 		. poorthuis_mail_bovenkop( $en ? 'Your message' : ( $args['je'] ? 'Wat je hebt ingevuld' : 'Uw bericht' ) )
 		. poorthuis_mail_velden( $args['velden'] )
 		. '</td></tr></table>'
