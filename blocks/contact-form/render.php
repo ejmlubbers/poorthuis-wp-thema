@@ -87,6 +87,7 @@ $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'fam
 	<input type="hidden" name="_t" value="<?php echo esc_attr( poorthuis_form_token() ); ?>">
 	<input type="hidden" name="_lang" value="<?php echo $en ? 'en' : 'nl'; ?>">
 	<input type="hidden" name="_subject" value="<?php echo esc_attr( $subject ); ?>">
+	<input type="hidden" name="_variant" value="<?php echo esc_attr( $variant ); ?>">
 
 	<label class="ph-check">
 		<input type="checkbox" name="akkoord" required>

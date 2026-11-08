@@ -8,6 +8,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+require_once __DIR__ . '/mail/opmaak.php';
+
 /** Foutmeldingen voor bezoekers van de Engelse site. */
 const POORTHUIS_FORM_ERRORS_EN = [
 	'Het formulier is verlopen. Herlaad de pagina en probeer het opnieuw.' => 'The form has expired. Please reload the page and try again.',
@@ -33,6 +35,40 @@ const POORTHUIS_FORM_FIELDS = [
 	'bericht'       => [ 'Bericht', false ],
 	'motivatie'     => [ 'Motivatie', false ],
 ];
+
+/** Engelse veldnamen, voor de kopie in de automatische reactie aan Engelstalige afzenders. */
+const POORTHUIS_FORM_LABELS_EN = [
+	'naam' => 'Name', 'voornaam' => 'First name', 'achternaam' => 'Last name', 'bedrijf' => 'Company',
+	'email' => 'Email address', 'telefoon' => 'Phone', 'opleiding' => 'Course', 'school' => 'School',
+	'studiejaar' => 'Year of study', 'periode' => 'Preferred period', 'leren' => 'What would you like to learn?',
+	'bericht' => 'Message', 'motivatie' => 'Motivation',
+];
+
+/**
+ * Automatische reactie aan de afzender: bevestiging, kopie van wat hij invulde en de algemene handtekening.
+ * Contact in de u-vorm, stage en sollicitatie in de je-vorm (zoals op de site).
+ * Teksten: concept, nog door Eline/Poorthuis goed te keuren.
+ */
+function poorthuis_form_autoreply( string $to, string $name, string $variant, bool $en, array $velden ): bool {
+	$je = in_array( $variant, [ 'stage', 'sollicitatie' ], true );
+	if ( $en ) {
+		$subject = $je ? 'Thank you for your application – Poorthuis Industrial Services' : 'Thank you for your message – Poorthuis Industrial Services';
+		$titel   = $je ? 'Thank you for your application' : 'Thank you for your message';
+		$aanhef  = $name ? 'Dear ' . $name . ',' : 'Hello,';
+		$regels  = $je
+			? [ 'Thank you for your application. We have received it and will be in touch with you soon.' ]
+			: [ 'Thank you for your message. We have received it and will get back to you shortly.', 'Is it urgent, for example a breakdown? Please call us directly on +31 541 513 415.' ];
+	} else {
+		$subject = $je ? 'Bedankt voor je aanmelding – Poorthuis Industrial Services' : 'Bedankt voor uw bericht – Poorthuis Industrial Services';
+		$titel   = $je ? 'Bedankt voor je aanmelding' : 'Bedankt voor uw bericht';
+		$aanhef  = $name ? ( $je ? 'Hoi ' : 'Beste ' ) . $name . ',' : ( $je ? 'Hoi,' : 'Beste heer/mevrouw,' );
+		$regels  = $je
+			? [ 'Bedankt voor je aanmelding! We hebben hem goed ontvangen en nemen snel contact met je op.' ]
+			: [ 'Bedankt voor uw bericht. Wij hebben het goed ontvangen en nemen binnen korte tijd contact met u op.', 'Heeft u een storing of is het spoed? Bel ons dan direct op +31 541 513 415.' ];
+	}
+	$body = poorthuis_mail_bevestiging( compact( 'en', 'je', 'titel', 'aanhef', 'regels', 'velden' ) );
+	return wp_mail( $to, $subject, $body, [ 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . poorthuis_form_recipient() ] );
+}
 
 /** Ontvanger: in te stellen bij Instellingen → Algemeen. */
 function poorthuis_form_recipient(): string {
@@ -92,17 +128,21 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		return $fail( 'Vul een geldig e-mailadres in.' );
 	}
 
-	$rows = [];
+	$velden = []; // [label, waarde] voor Poorthuis
+	$kopie  = []; // dezelfde gegevens in de taal van de afzender
 	foreach ( POORTHUIS_FORM_FIELDS as $k => [ $label ] ) {
 		if ( ! isset( $p[ $k ] ) || '' === trim( (string) $p[ $k ] ) ) {
 			continue;
 		}
-		$v      = in_array( $k, [ 'bericht', 'motivatie', 'leren' ], true ) ? sanitize_textarea_field( $p[ $k ] ) : sanitize_text_field( $p[ $k ] );
-		$rows[] = sprintf( '<tr><th align="left" valign="top" style="padding:6px 16px 6px 0;color:#555;font-weight:600">%s</th><td style="padding:6px 0">%s</td></tr>', esc_html( $label ), nl2br( esc_html( $v ) ) );
+		$v        = in_array( $k, [ 'bericht', 'motivatie', 'leren' ], true ) ? sanitize_textarea_field( $p[ $k ] ) : sanitize_text_field( $p[ $k ] );
+		$velden[] = [ $label, $v ];
+		$kopie[]  = [ $en ? ( POORTHUIS_FORM_LABELS_EN[ $k ] ?? $label ) : $label, $v ];
 	}
-	$page    = esc_url_raw( $p['_page'] ?? '' );
-	$rows[]  = sprintf( '<tr><th align="left" style="padding:6px 16px 6px 0;color:#555;font-weight:600">Pagina</th><td style="padding:6px 0">%s</td></tr>', esc_html( $page ) );
+	$page = esc_url_raw( $p['_page'] ?? '' );
 	$subject = sanitize_text_field( $p['_subject'] ?? 'Formulier poorthuis.com' );
+	if ( $en ) {
+		$subject .= ' (Engels)'; // zoals op de huidige site: Poorthuis ziet meteen in welke taal ze antwoorden
+	}
 
 	// cv als bijlage (alleen bij het stageformulier), max. 5 MB, pdf/doc/docx
 	$attachments = [];
@@ -123,7 +163,20 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		}
 	}
 
-	$body = '<div style="font-family:Arial,sans-serif;font-size:15px;color:#1a1a1a"><table cellspacing="0" cellpadding="0">' . implode( '', $rows ) . '</table></div>';
+	$variant = sanitize_key( $p['_variant'] ?? '' );
+	$naam    = sanitize_text_field( $p['naam'] ?? trim( ( $p['voornaam'] ?? '' ) . ' ' . ( $p['achternaam'] ?? '' ) ) );
+	$soorten = [ 'kort' => 'Contactformulier (homepage)', 'volledig' => 'Contactformulier', 'stage' => 'Stage-aanmelding', 'sollicitatie' => 'Sollicitatie' ];
+	$body    = poorthuis_mail_inzending( [
+		'soort'     => $soorten[ $variant ] ?? 'Formulier',
+		'naam'      => $naam,
+		'email'     => $email,
+		'onderwerp' => $subject,
+		'en'        => $en,
+		'velden'    => $velden,
+		'pagina'    => $page ?: home_url( '/' ),
+		'wanneer'   => wp_date( 'j F Y \o\m H:i' ),
+		'bijlage'   => (bool) $attachments,
+	] );
 	$sent = wp_mail(
 		poorthuis_form_recipient(),
 		$subject,
@@ -132,6 +185,10 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		$attachments
 	);
 	array_map( 'wp_delete_file', $attachments );
+
+	if ( $sent ) {
+		poorthuis_form_autoreply( $email, sanitize_text_field( $p['naam'] ?? $p['voornaam'] ?? '' ), $variant, $en, $kopie );
+	}
 
 	return $sent
 		? new WP_REST_Response( [ 'ok' => true ], 200 )
