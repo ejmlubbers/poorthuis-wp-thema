@@ -20,7 +20,16 @@ const POORTHUIS_MAIL_LOGO  = 'https://poorthuis.com/wp-content/uploads/2026/11/p
 /** De algemene mailhandtekening (gemaakt met docs/mailhandtekening/handtekening.js). */
 function poorthuis_mail_handtekening( bool $en ): string {
 	$file = __DIR__ . '/handtekening-' . ( $en ? 'en' : 'nl' ) . '.html';
-	return is_readable( $file ) ? (string) file_get_contents( $file ) : '';
+	$html = is_readable( $file ) ? (string) file_get_contents( $file ) : '';
+	// De smalle streep uit de Outlook-handtekening is hier vervangen door een brede, rustigere
+	// streep over de volle breedte van de mail (assets/images/mail-streep-2x.png).
+	$streep = '</table>' // sluit de handtekeningtabel; de streep krijgt de volle breedte
+		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin-top:16px;"><tr>'
+		. '<td height="10" bgcolor="' . POORTHUIS_MAIL_GEEL . '" style="height:10px;line-height:10px;font-size:0;background-color:' . POORTHUIS_MAIL_GEEL . ';padding:0;">'
+		. '<img src="' . esc_url( get_theme_file_uri( 'assets/images/mail-streep-2x.png' ) ) . '" width="600" height="10" alt="" style="display:block;width:100%;max-width:600px;height:10px;border:0;">'
+		. '</td></tr></table>'
+		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">'; // voor de disclaimer
+	return str_replace( '<!--STREEP-->', $streep, $html );
 }
 
 /** Rijen "label – waarde" als nette tabel. $rows = [ [label, waarde], ... ] */
