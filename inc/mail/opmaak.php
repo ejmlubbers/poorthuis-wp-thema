@@ -18,8 +18,8 @@ const POORTHUIS_MAIL_FONT  = 'Arial, Helvetica, sans-serif';
 const POORTHUIS_MAIL_LOGO  = 'https://poorthuis.com/wp-content/uploads/2026/11/poorthuis-logo-p-2x.png';
 
 /** De algemene mailhandtekening (gemaakt met docs/mailhandtekening/handtekening.js). */
-function poorthuis_mail_handtekening( bool $en ): string {
-	$file = __DIR__ . '/handtekening-' . ( $en ? 'en' : 'nl' ) . '.html';
+function poorthuis_mail_handtekening( string $lang ): string {
+	$file = __DIR__ . '/handtekening-' . ( in_array( $lang, [ 'en', 'de' ], true ) ? $lang : 'nl' ) . '.html';
 	$html = is_readable( $file ) ? (string) file_get_contents( $file ) : '';
 	// Streep onder de handtekening: even breed als de handtekening, iets dunner en rustiger
 	// dan in de Outlook-versie (assets/images/mail-streep-2x.png).
@@ -55,9 +55,9 @@ function poorthuis_mail_bovenkop( string $text ): string {
  * Het omhulsel: helemaal wit, bovenaan alleen het logo (niet in de bevestiging: daar staat het in de handtekening), daaronder de inhoud en (alleen bij de inzending) een kleine voetregel.
  * $preheader is de grijze voorbeeldregel die mailprogramma's naast het onderwerp tonen.
  */
-function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, bool $en, bool $logo = true ): string {
+function poorthuis_mail_omhulsel( string $inhoud, string $preheader, string $voet, string $lang, bool $logo = true ): string {
 	$f = POORTHUIS_MAIL_FONT;
-	return '<!DOCTYPE html><html lang="' . ( $en ? 'en' : 'nl' ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poorthuis</title></head>'
+	return '<!DOCTYPE html><html lang="' . esc_attr( $lang ) . '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poorthuis</title></head>'
 		. '<body style="margin:0;padding:0;background-color:#FFFFFF;">'
 		. '<div style="display:none;max-height:0;overflow:hidden;opacity:0;">' . esc_html( $preheader ) . '</div>'
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#FFFFFF" style="border-collapse:collapse;background-color:#FFFFFF;"><tr><td style="padding:28px 24px;">'
@@ -73,30 +73,30 @@ function poorthuis_mail_inzending( array $args ): string {
 	$f        = POORTHUIS_MAIL_FONT;
 	$naam     = $args['naam'] ?: $args['email'];
 	$soort    = $args['soort'];               // bijv. "Contactformulier"
-	$taal     = $args['en'] ? 'Engelstalig' : 'Nederlandstalig';
+	$taal     = [ 'en' => 'Engelstalig', 'de' => 'Duitstalig' ][ $args['lang'] ] ?? 'Nederlandstalig';
 	$inhoud   = poorthuis_mail_bovenkop( $soort . ' · ' . $taal )
 		. '<h1 style="margin:0 0 6px 0;font-family:' . $f . ';font-size:24px;line-height:30px;font-weight:normal;color:' . POORTHUIS_MAIL_BLAUW . ';">Nieuw bericht van ' . esc_html( $naam ) . '</h1>'
 		. '<p style="margin:0 0 22px 0;color:' . POORTHUIS_MAIL_GRIJS . ';font-size:14px;">Ingevuld op ' . esc_html( $args['wanneer'] ) . '</p>'
 		. poorthuis_mail_velden( $args['velden'] )
 		. ( $args['bijlage'] ? '<p style="margin:16px 0 0 0;font-size:14px;color:' . POORTHUIS_MAIL_INKT . ';">&#128206; Het cv zit als bijlage bij deze mail.</p>' : '' );
 	$voet     = 'Verstuurd via het formulier op <a href="' . esc_url( $args['pagina'] ) . '" style="color:' . POORTHUIS_MAIL_GRIJS . ';">' . esc_html( preg_replace( '#^https?://#', '', $args['pagina'] ) ) . '</a>';
-	return poorthuis_mail_omhulsel( $inhoud, $soort . ' van ' . $naam, $voet, false );
+	return poorthuis_mail_omhulsel( $inhoud, $soort . ' van ' . $naam, $voet, 'nl' );
 }
 
 /** Automatische reactie aan de afzender. */
 function poorthuis_mail_bevestiging( array $args ): string {
 	$f      = POORTHUIS_MAIL_FONT;
-	$en     = $args['en'];
+	$lang   = $args['lang'];
 	$p      = fn( $t ) => '<p style="margin:0 0 14px 0;font-family:' . $f . ';font-size:15px;line-height:23px;color:' . POORTHUIS_MAIL_INKT . ';">' . esc_html( $t ) . '</p>';
 	$inhoud = '<h1 style="margin:0 0 20px 0;font-family:' . $f . ';font-size:24px;line-height:30px;font-weight:normal;color:' . POORTHUIS_MAIL_BLAUW . ';">' . esc_html( $args['titel'] ) . '</h1>'
 		. $p( $args['aanhef'] )
 		. implode( '', array_map( $p, $args['regels'] ) )
 		. '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;margin:10px 0 28px 0;"><tr>'
 		. '<td bgcolor="' . POORTHUIS_MAIL_PAPER . '" style="background-color:' . POORTHUIS_MAIL_PAPER . ';padding:18px 20px 12px 20px;">'
-		. poorthuis_mail_bovenkop( $en ? 'Your message' : ( $args['je'] ? 'Wat je hebt ingevuld' : 'Uw bericht' ) )
+		. poorthuis_mail_bovenkop( [ 'en' => 'Your message', 'de' => $args['je'] ? 'Deine Angaben' : 'Ihre Nachricht' ][ $lang ] ?? ( $args['je'] ? 'Wat je hebt ingevuld' : 'Uw bericht' ) )
 		. poorthuis_mail_velden( $args['velden'] )
 		. '</td></tr></table>'
-		. poorthuis_mail_handtekening( $en );
+		. poorthuis_mail_handtekening( $lang );
 	$voet   = '';
-	return poorthuis_mail_omhulsel( $inhoud, $args['regels'][0] ?? '', $voet, $en, false ); // logo staat al in de handtekening
+	return poorthuis_mail_omhulsel( $inhoud, $args['regels'][0] ?? '', $voet, $lang, false ); // logo staat al in de handtekening
 }

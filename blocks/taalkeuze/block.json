@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "poorthuis/taalkeuze",
+  "title": "Taalkeuze",
+  "category": "poorthuis",
+  "icon": "translation",
+  "description": "Vlag van de huidige taal met een uitklapmenu naar de andere talen (Polylang).",
+  "supports": { "html": false, "inserter": false },
+  "editorScript": "file:./editor.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

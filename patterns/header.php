@@ -20,14 +20,14 @@
 				<!-- wp:navigation-link {"label":"<?php echo esc_html( poorthuis_t( 'Over ons', 'About us' ) ); ?>","url":"<?php echo poorthuis_url( '/over-ons/' ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"<?php echo esc_html( poorthuis_t( 'Onze diensten', 'Our services' ) ); ?>","url":"<?php echo poorthuis_url( '/onze-diensten/' ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"<?php echo esc_html( poorthuis_t( 'Werken bij', 'Careers' ) ); ?>","url":"<?php echo poorthuis_url( '/werken-bij/' ); ?>","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"Contact","url":"<?php echo poorthuis_url( '/contact/' ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_html( poorthuis_t( 'Contact', 'Contact', 'Kontakt' ) ); ?>","url":"<?php echo poorthuis_url( '/contact/' ); ?>","kind":"custom"} /-->
 			<!-- /wp:navigation -->
 
 			<!-- wp:html -->
 			<a class="ph-phone" href="tel:+31541513415" aria-label="<?php echo esc_attr( poorthuis_t( 'Bel', 'Call' ) ); ?> +31 541-513 415"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
 			<!-- /wp:html -->
 
-			<!-- wp:polylang/language-switcher {"dropdown":0,"show_names":0,"show_flags":1,"hide_current":1} /-->
+			<!-- wp:poorthuis/taalkeuze /-->
 		</div>
 		<!-- /wp:group -->
 	</div>

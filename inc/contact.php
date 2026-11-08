@@ -36,6 +36,23 @@ const POORTHUIS_FORM_FIELDS = [
 	'motivatie'     => [ 'Motivatie', false ],
 ];
 
+/** Duitse foutmeldingen. */
+const POORTHUIS_FORM_ERRORS_DE = [
+	'Het formulier is verlopen. Herlaad de pagina en probeer het opnieuw.' => 'Das Formular ist abgelaufen. Bitte laden Sie die Seite neu und versuchen Sie es erneut.',
+	'Te veel berichten in korte tijd. Probeer het later opnieuw.'          => 'Zu viele Nachrichten in kurzer Zeit. Bitte versuchen Sie es später erneut.',
+	'Vul een geldig e-mailadres in.'                                         => 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+	'Het cv moet een pdf- of Word-bestand van maximaal 5 MB zijn.'           => 'Der Lebenslauf muss eine PDF- oder Word-Datei von höchstens 5 MB sein.',
+	'Versturen is niet gelukt. Mail ons gerust direct op info@poorthuis.com.' => 'Senden fehlgeschlagen. Schreiben Sie uns gerne direkt an info@poorthuis.com.',
+];
+
+/** Duitse veldnamen, voor de kopie in de automatische reactie aan Duitstalige afzenders. */
+const POORTHUIS_FORM_LABELS_DE = [
+	'naam' => 'Name', 'voornaam' => 'Vorname', 'achternaam' => 'Nachname', 'bedrijf' => 'Firma',
+	'email' => 'E-Mail-Adresse', 'telefoon' => 'Telefon', 'opleiding' => 'Ausbildung / Studium', 'school' => 'Schule / Hochschule',
+	'studiejaar' => 'Ausbildungsjahr', 'periode' => 'Gewünschter Zeitraum', 'leren' => 'Was möchtest du bei uns lernen?',
+	'bericht' => 'Nachricht', 'motivatie' => 'Motivation',
+];
+
 /** Engelse veldnamen, voor de kopie in de automatische reactie aan Engelstalige afzenders. */
 const POORTHUIS_FORM_LABELS_EN = [
 	'naam' => 'Name', 'voornaam' => 'First name', 'achternaam' => 'Last name', 'bedrijf' => 'Company',
@@ -49,9 +66,16 @@ const POORTHUIS_FORM_LABELS_EN = [
  * Contact in de u-vorm, stage en sollicitatie in de je-vorm (zoals op de site).
  * Teksten: concept, nog door Eline/Poorthuis goed te keuren.
  */
-function poorthuis_form_autoreply( string $to, string $name, string $variant, bool $en, array $velden ): bool {
+function poorthuis_form_autoreply( string $to, string $name, string $variant, string $lang, array $velden ): bool {
 	$je = in_array( $variant, [ 'stage', 'sollicitatie' ], true );
-	if ( $en ) {
+	if ( 'de' === $lang ) {
+		$subject = $je ? 'Danke für deine Bewerbung – Poorthuis Industrial Services' : 'Vielen Dank für Ihre Nachricht – Poorthuis Industrial Services';
+		$titel   = $je ? 'Danke für deine Bewerbung' : 'Vielen Dank für Ihre Nachricht';
+		$aanhef  = $je ? ( $name ? 'Hallo ' . $name . ',' : 'Hallo,' ) : ( $name ? 'Guten Tag ' . $name . ',' : 'Sehr geehrte Damen und Herren,' );
+		$regels  = $je
+			? [ 'Danke für deine Bewerbung! Wir haben sie erhalten und melden uns bald bei dir.', 'Du kannst einfach auf diese E-Mail antworten. Hast du eine dringende Frage? Dann ruf uns an unter +31 541 513 415.' ]
+			: [ 'Vielen Dank für Ihre Nachricht. Wir haben sie erhalten und melden uns in Kürze bei Ihnen.', 'Sie können einfach auf diese E-Mail antworten. Haben Sie eine dringende Frage oder eine Störung? Dann rufen Sie uns direkt an unter +31 541 513 415.' ];
+	} elseif ( 'en' === $lang ) {
 		$subject = $je ? 'Thank you for your application – Poorthuis Industrial Services' : 'Thank you for your message – Poorthuis Industrial Services';
 		$titel   = $je ? 'Thank you for your application' : 'Thank you for your message';
 		$aanhef  = $name ? 'Dear ' . $name . ',' : 'Hello,';
@@ -66,7 +90,7 @@ function poorthuis_form_autoreply( string $to, string $name, string $variant, bo
 			? [ 'Bedankt voor je aanmelding! We hebben hem goed ontvangen en nemen snel contact met je op.', 'Je kunt gewoon reageren op deze mail. Heb je een dringende vraag? Bel ons dan op +31 541 513 415.' ]
 			: [ 'Bedankt voor uw bericht. Wij hebben het goed ontvangen en nemen binnen korte tijd contact met u op.', 'U kunt gewoon reageren op deze mail. Heeft u een dringende vraag of spoed? Bel ons dan direct op +31 541 513 415.' ];
 	}
-	$body = poorthuis_mail_bevestiging( compact( 'en', 'je', 'titel', 'aanhef', 'regels', 'velden' ) );
+	$body = poorthuis_mail_bevestiging( compact( 'lang', 'je', 'titel', 'aanhef', 'regels', 'velden' ) );
 	return wp_mail( $to, $subject, $body, [ 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . poorthuis_form_recipient() ] );
 }
 
@@ -77,12 +101,19 @@ function poorthuis_form_recipient(): string {
 }
 
 add_action( 'admin_init', function () {
-	register_setting( 'general', 'poorthuis_form_recipient', [ 'type' => 'string', 'sanitize_callback' => 'sanitize_email' ] );
+	register_setting( 'general', 'poorthuis_form_recipient', [ 'type' => 'string', 'show_in_rest' => true, 'sanitize_callback' => 'sanitize_email' ] );
+	register_setting( 'general', 'poorthuis_form_bcc', [ 'type' => 'string', 'show_in_rest' => true, 'sanitize_callback' => 'sanitize_email' ] );
 	add_settings_field( 'poorthuis_form_recipient', 'Ontvanger formulieren', function () {
 		printf(
 			'<input type="email" name="poorthuis_form_recipient" value="%s" class="regular-text" placeholder="%s"><p class="description">Hier komen contact- en stageformulieren binnen. Leeg = het e-mailadres van de beheerder.</p>',
 			esc_attr( get_option( 'poorthuis_form_recipient' ) ),
 			esc_attr( get_option( 'admin_email' ) )
+		);
+	}, 'general' );
+	add_settings_field( 'poorthuis_form_bcc', 'Kopie (bcc) formulieren', function () {
+		printf(
+			'<input type="email" name="poorthuis_form_bcc" value="%s" class="regular-text"><p class="description">Optioneel: dit adres krijgt een onzichtbare kopie van elke inzending.</p>',
+			esc_attr( get_option( 'poorthuis_form_bcc' ) )
 		);
 	}, 'general' );
 } );
@@ -103,8 +134,9 @@ add_action( 'rest_api_init', function () {
 
 function poorthuis_handle_form( WP_REST_Request $req ) {
 	$p    = $req->get_body_params();
-	$en   = 'en' === ( $p['_lang'] ?? '' );
-	$fail = fn( $msg, $code = 400 ) => new WP_REST_Response( [ 'ok' => false, 'message' => $en ? ( POORTHUIS_FORM_ERRORS_EN[ $msg ] ?? $msg ) : $msg ], $code );
+	$lang = in_array( $p['_lang'] ?? '', [ 'en', 'de' ], true ) ? $p['_lang'] : 'nl';
+	$errs = [ 'en' => POORTHUIS_FORM_ERRORS_EN, 'de' => POORTHUIS_FORM_ERRORS_DE ][ $lang ] ?? [];
+	$fail = fn( $msg, $code = 400 ) => new WP_REST_Response( [ 'ok' => false, 'message' => $errs[ $msg ] ?? $msg ], $code );
 
 	// honeypot: bots vullen dit verborgen veld in
 	if ( ! empty( $p['website'] ) ) {
@@ -136,12 +168,12 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		}
 		$v        = in_array( $k, [ 'bericht', 'motivatie', 'leren' ], true ) ? sanitize_textarea_field( $p[ $k ] ) : sanitize_text_field( $p[ $k ] );
 		$velden[] = [ $label, $v ];
-		$kopie[]  = [ $en ? ( POORTHUIS_FORM_LABELS_EN[ $k ] ?? $label ) : $label, $v ];
+		$kopie[]  = [ ( [ 'en' => POORTHUIS_FORM_LABELS_EN, 'de' => POORTHUIS_FORM_LABELS_DE ][ $lang ][ $k ] ?? null ) ?? $label, $v ];
 	}
 	$page = esc_url_raw( $p['_page'] ?? '' );
 	$subject = sanitize_text_field( $p['_subject'] ?? 'Formulier poorthuis.com' );
-	if ( $en ) {
-		$subject .= ' (Engels)'; // zoals op de huidige site: Poorthuis ziet meteen in welke taal ze antwoorden
+	if ( 'nl' !== $lang ) {
+		$subject .= 'en' === $lang ? ' (Engels)' : ' (Duits)'; // zoals op de huidige site: Poorthuis ziet meteen in welke taal ze antwoorden
 	}
 
 	// cv als bijlage (alleen bij het stageformulier), max. 5 MB, pdf/doc/docx
@@ -171,7 +203,7 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		'naam'      => $naam,
 		'email'     => $email,
 		'onderwerp' => $subject,
-		'en'        => $en,
+		'lang'      => $lang,
 		'velden'    => $velden,
 		'pagina'    => $page ?: home_url( '/' ),
 		'wanneer'   => wp_date( 'j F Y \o\m H:i' ),
@@ -181,13 +213,13 @@ function poorthuis_handle_form( WP_REST_Request $req ) {
 		poorthuis_form_recipient(),
 		$subject,
 		$body,
-		[ 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . $email ],
+		array_filter( [ 'Content-Type: text/html; charset=UTF-8', 'Reply-To: ' . $email, is_email( get_option( 'poorthuis_form_bcc' ) ) ? 'Bcc: ' . get_option( 'poorthuis_form_bcc' ) : '' ] ),
 		$attachments
 	);
 	array_map( 'wp_delete_file', $attachments );
 
 	if ( $sent ) {
-		poorthuis_form_autoreply( $email, sanitize_text_field( $p['naam'] ?? $p['voornaam'] ?? '' ), $variant, $en, $kopie );
+		poorthuis_form_autoreply( $email, sanitize_text_field( $p['naam'] ?? $p['voornaam'] ?? '' ), $variant, $lang, $kopie );
 	}
 
 	return $sent

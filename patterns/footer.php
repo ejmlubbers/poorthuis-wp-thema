@@ -38,7 +38,7 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/over-ons/' ); ?>"><?php echo esc_html( poorthuis_t( 'Over ons', 'About us' ) ); ?></a></li><!-- /wp:list-item -->
 				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/onze-diensten/' ); ?>"><?php echo esc_html( poorthuis_t( 'Onze diensten', 'Our services' ) ); ?></a></li><!-- /wp:list-item -->
 				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/werken-bij/' ); ?>"><?php echo esc_html( poorthuis_t( 'Werken bij', 'Careers' ) ); ?></a></li><!-- /wp:list-item -->
-				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/contact/' ); ?>">Contact</a></li><!-- /wp:list-item -->
+				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/contact/' ); ?>"><?php echo esc_html( poorthuis_t( 'Contact', 'Contact', 'Kontakt' ) ); ?></a></li><!-- /wp:list-item -->
 			</ul>
 			<!-- /wp:list -->
 		</div>
@@ -50,8 +50,13 @@ $ico = fn( $n ) => '<span class="ph-foot-ico"><img src="' . poorthuis_img( '../i
 			<!-- /wp:paragraph -->
 			<!-- wp:list {"className":"ph-foot-links"} -->
 			<ul class="wp-block-list ph-foot-links">
+				<?php if ( get_page_by_path( 'algemene-voorwaarden' ) ) : // pas zichtbaar als de pagina bestaat ?>
 				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/algemene-voorwaarden/' ); ?>"><?php echo esc_html( poorthuis_t( 'Algemene voorwaarden', 'Terms & conditions' ) ); ?></a></li><!-- /wp:list-item -->
+				<?php endif; ?>
 				<!-- wp:list-item --><li><a href="<?php echo poorthuis_url( '/privacyverklaring/' ); ?>"><?php echo esc_html( poorthuis_t( 'Privacyverklaring', 'Privacy statement' ) ); ?></a></li><!-- /wp:list-item -->
+				<?php if ( function_exists( 'poorthuis_ga_id' ) && poorthuis_ga_id() ) : ?>
+				<!-- wp:list-item --><li><a href="#" class="ph-cookie-open"><?php echo esc_html( poorthuis_t( 'Cookie-instellingen', 'Cookie settings' ) ); ?></a></li><!-- /wp:list-item -->
+				<?php endif; ?>
 			</ul>
 			<!-- /wp:list -->
 		</div>

@@ -1,0 +1,14 @@
+.ph-lang { position: relative; flex: none; }
+.ph-lang summary { list-style: none; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; padding: 8px 6px; border-radius: 8px; color: var(--wp--preset--color--ink); }
+.ph-lang summary::-webkit-details-marker { display: none; }
+.ph-lang summary:hover { background: var(--wp--preset--color--paper-2, #F2F2F6); }
+.ph-lang-flag { display: block; width: 20px; height: 14px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(20,16,61,.12); }
+.ph-lang-chev { transition: transform .2s ease; }
+.ph-lang[open] .ph-lang-chev { transform: rotate(180deg); }
+.ph-lang ul { position: absolute; right: 0; top: calc(100% + 8px); margin: 0; padding: 6px; list-style: none; min-width: 160px; background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 12px; box-shadow: 0 18px 40px -20px rgba(20,16,61,.35); z-index: 60; }
+.ph-lang li { margin: 0; }
+.ph-lang li a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; text-decoration: none; color: var(--wp--preset--color--ink); font-size: 15px; }
+.ph-lang li a:hover { background: var(--wp--preset--color--paper, #F5F5F8); color: var(--wp--preset--color--blue); }
+/* doorzichtige kop over een donkere sectie */
+.ph-header.is-overlay:not(.is-scrolled) .ph-lang summary { color: #fff; }
+.ph-header.is-overlay:not(.is-scrolled) .ph-lang summary:hover { background: rgba(255,255,255,.12); }

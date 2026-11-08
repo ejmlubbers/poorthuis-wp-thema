@@ -299,3 +299,18 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-vacancy-hero { position: relative; overflow: hidden; }
 .ph-vacancy-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(20,16,61,.6) 0%, rgba(20,16,61,.32) 38%, rgba(20,16,61,0) 72%); }
 .ph-vacancy-hero > * { position: relative; z-index: 1; }
+
+/* ---------- Cookiemelding ---------- */
+.ph-cookie { position: fixed; left: 20px; bottom: 20px; z-index: 90; width: min(420px, calc(100vw - 40px)); background: #fff; border: 1px solid var(--wp--preset--color--line); border-radius: 16px; box-shadow: 0 24px 60px -24px rgba(20,16,61,.45); padding: 22px 22px 20px; opacity: 0; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease; }
+.ph-cookie.is-open { opacity: 1; transform: none; }
+.ph-cookie-title { margin: 0 0 6px; font-size: 17px; color: var(--wp--preset--color--blue); }
+.ph-cookie-text { margin: 0 0 16px; font-size: 14.5px; line-height: 1.55; color: var(--wp--preset--color--ink-2); }
+.ph-cookie-text a { color: var(--wp--preset--color--blue); }
+.ph-cookie-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.ph-cookie-buttons button { font: inherit; font-size: 15px; border-radius: 999px; padding: 10px 20px; cursor: pointer; border: 1.5px solid transparent; transition: background .2s, border-color .2s; }
+.ph-cookie-yes { background: var(--wp--preset--color--blue); color: #fff; }
+.ph-cookie-yes:hover { background: #2A2873; }
+.ph-cookie-no { background: transparent; color: var(--wp--preset--color--ink); border-color: var(--wp--preset--color--line) !important; }
+.ph-cookie-no:hover { border-color: var(--wp--preset--color--blue) !important; }
+@media (max-width: 600px) { .ph-cookie { left: 12px; right: 12px; bottom: 12px; width: auto; } }
+.ph-muted { color: var(--wp--preset--color--ink-2); font-size: 14px; margin-top: 40px !important; }

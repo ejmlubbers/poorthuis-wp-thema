@@ -7,8 +7,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $variant = $attributes['variant'] ?? 'volledig';
-$en      = function_exists( 'pll_current_language' ) && 'nl' !== pll_current_language();
-$t       = fn( $nl, $eng ) => $en ? $eng : $nl;
+$lang    = poorthuis_lang();
+$t       = 'poorthuis_t';
 
 $subjects = [
 	'kort'     => 'Contactformulier homepage poorthuis.com',
@@ -85,7 +85,7 @@ $autocomp = [ 'naam' => 'name', 'voornaam' => 'given-name', 'achternaam' => 'fam
 	<!-- onzichtbaar voor mensen; bots vullen het in -->
 	<div class="ph-hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 	<input type="hidden" name="_t" value="<?php echo esc_attr( poorthuis_form_token() ); ?>">
-	<input type="hidden" name="_lang" value="<?php echo $en ? 'en' : 'nl'; ?>">
+	<input type="hidden" name="_lang" value="<?php echo esc_attr( $lang ); ?>">
 	<input type="hidden" name="_subject" value="<?php echo esc_attr( $subject ); ?>">
 	<input type="hidden" name="_variant" value="<?php echo esc_attr( $variant ); ?>">
 

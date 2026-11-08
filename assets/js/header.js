@@ -26,3 +26,10 @@
 		} );
 	} );
 } )();
+
+/* Taalkeuze: dichtklappen bij een klik ernaast of met Escape. */
+( function () {
+	const close = () => document.querySelectorAll( '.ph-lang[open]' ).forEach( ( d ) => d.removeAttribute( 'open' ) );
+	document.addEventListener( 'click', ( e ) => { if ( ! e.target.closest( '.ph-lang' ) ) close(); } );
+	document.addEventListener( 'keydown', ( e ) => { if ( 'Escape' === e.key ) close(); } );
+} )();

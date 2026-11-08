@@ -15,3 +15,5 @@ require __DIR__ . '/inc/setup.php';
 require __DIR__ . '/inc/post-types.php';
 require __DIR__ . '/inc/blocks.php';
 require __DIR__ . '/inc/contact.php';
+require __DIR__ . '/inc/cookies.php';
+require __DIR__ . '/inc/inrichten.php';
