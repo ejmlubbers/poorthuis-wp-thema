@@ -202,9 +202,15 @@
 			projects.forEach( ( p, i ) => { const pos = place( hsEls[ i ], p.lat, p.lng ); if ( sel === p ) act = pos; } );
 			fillCard( sel );
 			if ( act && act.vis ) {
-				const left = act.X > w * 0.55;
+				// kaartje links of rechts van de stip, maar altijd binnen het zichtbare deel van het scherm
+				const r = wrap.getBoundingClientRect(), cw = card.offsetWidth, pad = 12;
+				const minX = Math.max( 0, -r.left ) + pad;
+				const maxX = Math.min( w, document.documentElement.clientWidth - r.left ) - cw - pad;
+				const left = act.X + 18 + cw > maxX + cw && act.X - 18 - cw >= minX;
+				let x = left ? act.X - 18 - cw : act.X + 18;
+				x = Math.max( minX, Math.min( x, maxX ) );
 				card.style.opacity = 1;
-				card.style.transform = 'translate(' + ( left ? act.X - 18 : act.X + 18 ).toFixed( 1 ) + 'px,' + ( act.Y - 20 ).toFixed( 1 ) + 'px) translate(' + ( left ? '-100%' : '0' ) + ',-100%)';
+				card.style.transform = 'translate(' + x.toFixed( 1 ) + 'px,' + ( act.Y - 20 ).toFixed( 1 ) + 'px) translate(0,-100%)';
 			} else card.style.opacity = 0;
 		}
 

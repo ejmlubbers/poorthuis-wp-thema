@@ -50,3 +50,8 @@
 @media (prefers-reduced-motion: reduce) {
 	.ph-globe-hs::before, .ph-globe-live { animation: none; }
 }
+
+/* projectkaartje past altijd op het scherm; lange namen worden afgekapt */
+.ph-globe-card { max-width: min(320px, calc(100vw - 24px)); }
+.ph-globe-card > div { min-width: 0; }
+.ph-globe-card b, .ph-globe-card span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

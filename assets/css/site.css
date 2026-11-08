@@ -169,6 +169,19 @@ body { -webkit-font-smoothing: antialiased; }
 	.ph-hero-cols > .wp-block-column:first-child { order: 2; }
 	.ph-menneke img { height: min(46vh, 340px); transform: none; margin: 20px auto 0; }
 	.ph-offset { margin-top: 0 !important; }
+
+	/* 1949-badge onder de video in plaats van eroverheen: alleen een randje overlapt de foto */
+	.ph-badge-wrap:has(.ph-video-caption) .ph-badge, .ph-badge { position: relative; left: auto; bottom: auto !important; margin: -26px 0 0 14px !important; max-width: 190px; padding: 16px 20px; }
+	.ph-badge-wrap .ph-video-caption { margin-top: 12px; }
+
+	/* onze diensten: op mobiel altijd eerst de foto, dan de tekst */
+	.ph-dienst-rows .wp-block-columns > .wp-block-column:has(.wp-block-image) { order: -1; }
+
+	/* certificaten: kleiner en twee naast elkaar, als een rustige tagwolk */
+	.ph-cert-sec .is-layout-flex:has(> .is-style-certificaat) { gap: 10px !important; align-items: stretch; }
+	.ph-cert-sec .is-style-certificaat { flex: 0 1 calc(50% - 5px); max-width: calc(50% - 5px); min-width: 0; padding: 14px 10px; border-radius: 12px; }
+	.ph-cert-sec .is-style-certificaat > :first-child { font-size: 11.5px; letter-spacing: .03em; }
+	.ph-cert-sec .is-style-certificaat > :last-child:not(:first-child) { font-size: 11.5px; margin-top: 4px; }
 }
 
 .ph-sticky { position: sticky; top: 108px; align-self: flex-start; }
