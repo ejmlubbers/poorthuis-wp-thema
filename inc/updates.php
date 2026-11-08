@@ -12,7 +12,7 @@ const POORTHUIS_UPDATE_REPO = 'ejmlubbers/poorthuis-wp-thema';
 /**
  * Nieuwste versie op GitHub. Leest het versienummer uit style.css op raw.githubusercontent.com
  * (geen API, dus geen limiet van 60 vragen per uur per server) en downloadt de zip van de release.
- * Bewaard: 6 uur als het lukt, 15 minuten als GitHub niet bereikbaar was.
+ * Bewaard: 3 uur als het lukt, 15 minuten als GitHub niet bereikbaar was.
  */
 function poorthuis_laatste_release(): ?array {
 	$cached = get_site_transient( 'poorthuis_release' );
@@ -31,7 +31,7 @@ function poorthuis_laatste_release(): ?array {
 			'package' => 'https://github.com/' . POORTHUIS_UPDATE_REPO . '/releases/download/v' . $m[1] . '/poorthuis.zip',
 		];
 	}
-	set_site_transient( 'poorthuis_release', $out, $out ? 6 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS );
+	set_site_transient( 'poorthuis_release', $out, $out ? 3 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS );
 	return $out ?: null;
 }
 
@@ -53,6 +53,12 @@ add_filter( 'update_themes_github.com', function ( $update, $theme_data, $styles
 	];
 }, 10, 3 );
 
-// Na een update meteen opnieuw kijken, en "Nu controleren" bij Updates laat ook GitHub opnieuw vragen.
+// Na een update meteen opnieuw kijken. "Opnieuw controleren" bij Updates vraagt GitHub ook opnieuw:
+// prioriteit 0, zodat het geheugen leeg is vóórdat WordPress zelf (prioriteit 10) gaat controleren.
 add_action( 'upgrader_process_complete', fn() => delete_site_transient( 'poorthuis_release' ) );
-add_action( 'load-update-core.php', fn() => isset( $_GET['force-check'] ) && delete_site_transient( 'poorthuis_release' ) );
+add_action( 'load-update-core.php', function () {
+	if ( isset( $_GET['force-check'] ) ) {
+		delete_site_transient( 'poorthuis_release' );
+	}
+}, 0 );
+add_action( 'delete_site_transient_update_themes', fn() => delete_site_transient( 'poorthuis_release' ) );
