@@ -20,3 +20,4 @@ require __DIR__ . '/inc/inrichten.php';
 require __DIR__ . '/inc/redirects.php';
 require __DIR__ . '/inc/updates.php';
 require __DIR__ . '/inc/verificatie.php';
+require __DIR__ . '/inc/seo.php';
