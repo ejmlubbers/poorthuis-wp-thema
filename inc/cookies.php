@@ -55,7 +55,7 @@ add_action( 'wp_footer', function () {
 			poorthuis_url( '/privacyverklaring/' )
 		) ); ?></p>
 		<div class="ph-cookie-buttons">
-			<button type="button" class="ph-cookie-yes"><?php echo esc_html( poorthuis_t( 'Analytische cookies toestaan', 'Allow analytical cookies', 'Analyse-Cookies zulassen' ) ); ?></button>
+			<button type="button" class="ph-cookie-yes"><?php echo esc_html( poorthuis_t( 'Cookies toestaan', 'Allow cookies', 'Cookies zulassen' ) ); ?></button>
 			<button type="button" class="ph-cookie-no"><?php echo esc_html( poorthuis_t( 'Alleen noodzakelijke cookies', 'Necessary cookies only', 'Nur notwendige Cookies' ) ); ?></button>
 		</div>
 	</div>

@@ -127,7 +127,7 @@
 <li><strong>Notwendig:</strong> Wir speichern Ihre Cookie-Auswahl, damit Sie den Hinweis nicht jedes Mal sehen. Hierfür ist keine Einwilligung erforderlich.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
-<li><strong>Statistiken:</strong> Wenn Sie auf „Analyse-Cookies zulassen“ klicken, setzt Google Analytics Cookies, um zu messen, wie Besucher die Website nutzen. Wir verwenden diese Informationen nur zur Verbesserung der Website. Klicken Sie auf „Nur notwendige Cookies“, werden diese Cookies nicht gesetzt.</li>
+<li><strong>Statistiken:</strong> Wenn Sie auf „Cookies zulassen“ klicken, setzt Google Analytics Cookies, um zu messen, wie Besucher die Website nutzen. Wir verwenden diese Informationen nur zur Verbesserung der Website. Klicken Sie auf „Nur notwendige Cookies“, werden diese Cookies nicht gesetzt.</li>
 <!-- /wp:list-item -->
 <!-- wp:list-item -->
 <li><strong>Video:</strong> Der Unternehmensfilm wird erst dann von YouTube geladen, wenn Sie darauf klicken. Erst dann kann YouTube Cookies setzen.</li>
