@@ -65,8 +65,8 @@ html:has(.ph-mnav[open]) { overflow: hidden; }
 .ph-mnav-main li { opacity: 0; animation: ph-mnav-in .35s ease forwards; }
 .ph-mnav-main li:nth-child(2) { animation-delay: .04s; } .ph-mnav-main li:nth-child(3) { animation-delay: .08s; }
 .ph-mnav-main li:nth-child(4) { animation-delay: .12s; } .ph-mnav-main li:nth-child(5) { animation-delay: .16s; }
-.ph-mnav-main a { display: inline-block; position: relative; padding: 8px 0; font-size: clamp(30px, 9vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -.02em; color: var(--wp--preset--color--blue); text-decoration: none; }
-.ph-mnav-main a::after { content: ""; position: absolute; left: 0; bottom: 6px; height: 3px; width: 0; background: var(--wp--preset--color--yellow); transition: width .2s ease; }
+.ph-mnav-main a { display: inline-block; position: relative; padding: 8px 0; font-size: clamp(22px, 6.2vw, 27px); font-weight: 400; line-height: 1.2; letter-spacing: -.01em; color: var(--wp--preset--color--blue); text-decoration: none; }
+.ph-mnav-main a::after { content: ""; position: absolute; left: 0; bottom: 4px; height: 2px; width: 0; background: var(--wp--preset--color--yellow); transition: width .2s ease; }
 .ph-mnav-main a:hover::after, .ph-mnav-main a[aria-current="page"]::after { width: 100%; }
 .ph-mnav-foot { border-top: 1px solid var(--wp--preset--color--line); padding-top: 20px; font-size: 14px; color: #6b6a80; }
 .ph-mnav-foot p { margin: 0; }
