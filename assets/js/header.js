@@ -33,3 +33,22 @@
 	document.addEventListener( 'click', ( e ) => { if ( ! e.target.closest( '.ph-lang' ) ) close(); } );
 	document.addEventListener( 'keydown', ( e ) => { if ( 'Escape' === e.key ) close(); } );
 } )();
+
+/* Mobiel menu: <dialog> met logo, grote links en een klein voetmenu.
+   showModal() zet hem in de top layer (boven alles, focus blijft erin, Escape sluit). */
+( function () {
+	const dlg = document.getElementById( 'ph-mnav' );
+	const open = document.querySelector( '.ph-mnav-open' );
+	if ( ! dlg || ! open || typeof dlg.showModal !== 'function' ) return;
+	const here = location.pathname.replace( /\/+$/, '' ) || '/';
+	dlg.querySelectorAll( '.ph-mnav-main a' ).forEach( ( a ) => {
+		if ( ( new URL( a.href ).pathname.replace( /\/+$/, '' ) || '/' ) === here ) a.setAttribute( 'aria-current', 'page' );
+	} );
+	open.addEventListener( 'click', () => { dlg.showModal(); open.setAttribute( 'aria-expanded', 'true' ); } );
+	dlg.addEventListener( 'close', () => open.setAttribute( 'aria-expanded', 'false' ) );
+	dlg.querySelector( '.ph-mnav-close' ).addEventListener( 'click', () => dlg.close() );
+	// sluiten na een klik op een link (ook #-links op dezelfde pagina en cookie-instellingen)
+	dlg.addEventListener( 'click', ( e ) => { if ( e.target.closest( 'a' ) ) dlg.close(); } );
+	// terug naar desktopbreedte met het menu open: dichtdoen
+	window.matchMedia( '(min-width: 782px)' ).addEventListener( 'change', ( m ) => { if ( m.matches ) dlg.close(); } );
+} )();
