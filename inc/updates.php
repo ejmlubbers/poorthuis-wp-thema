@@ -19,7 +19,8 @@ function poorthuis_laatste_release(): ?array {
 	if ( is_array( $cached ) ) {
 		return $cached ?: null;
 	}
-	$res = wp_remote_get( 'https://raw.githubusercontent.com/' . POORTHUIS_UPDATE_REPO . '/main/style.css', [
+	// ?v=… per minuut anders, zodat de 5-minutenkopie van GitHubs CDN niet een oude versie teruggeeft
+	$res = wp_remote_get( 'https://raw.githubusercontent.com/' . POORTHUIS_UPDATE_REPO . '/main/style.css?v=' . floor( time() / 60 ), [
 		'timeout' => 8,
 		'headers' => [ 'User-Agent' => 'poorthuis-theme' ],
 	] );
