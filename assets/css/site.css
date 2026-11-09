@@ -35,6 +35,16 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-header.is-overlay:not(.is-scrolled) .ph-phone,
 .ph-header.is-overlay:not(.is-scrolled) .wp-block-navigation__responsive-container-open { color: #fff; }
 .ph-header.is-overlay.is-scrolled { box-shadow: 0 6px 24px -18px rgba(20,16,61,.5); }
+
+/* mobiel menu (overlay van het navigatieblok)
+   - backdrop-filter maakt van de kop het kader voor position:fixed, waardoor het
+     open menu in de 77px hoge kop gevangen zat: uitzetten zolang het menu open is
+   - het menu is wit, dus nooit de witte linkkleur van de doorzichtige kop erven */
+.has-modal-open .ph-header,
+.ph-header:has(.wp-block-navigation__responsive-container.is-menu-open) { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.ph-header .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open { background: #fff; color: var(--wp--preset--color--ink); }
+.ph-header.ph-header .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open :is(a, button) { color: var(--wp--preset--color--ink); }
+.ph-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap: 18px; font-size: 22px; }
 .ph-dark-top .wp-site-blocks > header.wp-block-template-part { margin-bottom: -77px; }
 /* donkere paginakop schuift onder de doorzichtige kop door */
 .ph-dark-top .ph-page-hero { padding-top: calc(77px + var(--wp--preset--spacing--70)) !important; }
