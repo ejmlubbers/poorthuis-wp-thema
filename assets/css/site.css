@@ -35,6 +35,13 @@ body { -webkit-font-smoothing: antialiased; }
 .ph-header.is-overlay:not(.is-scrolled) .ph-phone,
 .ph-header.is-overlay:not(.is-scrolled) .wp-block-navigation__responsive-container-open { color: #fff; }
 .ph-header.is-overlay.is-scrolled { box-shadow: 0 6px 24px -18px rgba(20,16,61,.5); }
+/* opengeklapt mobiel menu: altijd donkere tekst op wit, ook als de kop doorzichtig (wit) is */
+.ph-header .wp-block-navigation__responsive-container.is-menu-open { background: #fff !important; color: var(--wp--preset--color--ink) !important; }
+.ph-header .wp-block-navigation__responsive-container.is-menu-open a,
+.ph-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-close { color: var(--wp--preset--color--ink) !important; }
+.ph-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content { padding-top: 64px; }
+.ph-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item { font-size: 22px; }
+.ph-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { gap: 18px; }
 .ph-dark-top .wp-site-blocks > header.wp-block-template-part { margin-bottom: -77px; }
 /* donkere paginakop schuift onder de doorzichtige kop door */
 .ph-dark-top .ph-page-hero { padding-top: calc(77px + var(--wp--preset--spacing--70)) !important; }
